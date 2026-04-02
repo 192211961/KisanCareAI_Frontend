@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onboarding - KisanMitra</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .onboarding-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+            text-align: center;
+        }
+        .icon-bg {
+            width: 140dp;
+            height: 140dp;
+            background: var(--light-green);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+        .title {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--black);
+            margin-bottom: 16px;
+        }
+        .subtitle {
+            font-size: 18px;
+            color: var(--grey);
+            margin-bottom: 24px;
+            line-height: 1.4;
+        }
+        .indicators {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+        .indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 4px;
+            background: var(--grey);
+            opacity: 0.3;
+        }
+        .indicator.active {
+            width: 24px;
+            background: var(--vibrant-green);
+            opacity: 1;
+        }
+        .btn-skip {
+            background-color: var(--light-grey);
+            color: var(--black);
+            margin-top: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <main class="onboarding-container">
+            <div class="icon-bg" style="width: 140px; height: 140px;">
+                <i data-lucide="sprout" size="80" color="var(--vibrant-green)"></i>
+            </div>
+            
+            <h1 class="title">AI-Powered Advice</h1>
+            <p class="subtitle">Get instant farming recommendations based on your queries</p>
+            
+            <div class="indicators">
+                <div class="indicator active"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+            </div>
+            
+            <button class="btn-primary" onclick="window.location.href='login.html'">Next</button>
+            <button class="btn-primary btn-skip" onclick="window.location.href='login.html'">Skip</button>
+        </main>
+    </div>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

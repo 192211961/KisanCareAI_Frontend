@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Account - KisanMitra</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .delete-header {
+            padding: 40px 16px 12px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #EEEEEE;
+        }
+        .warning-box {
+            background: #FEF2F2;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 16px;
+            color: #B91C1C;
+        }
+        .warning-title {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+        .warning-list {
+            font-size: 14px;
+            margin-top: 12px;
+            line-height: 1.5;
+        }
+        .input-label {
+            font-size: 14px;
+            color: #455A64;
+            margin-top: 24px;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .reason-box {
+            height: 100px;
+            resize: none;
+        }
+        .delete-btn {
+            background: #00B14F;
+            color: white;
+            margin-top: 24px;
+        }
+        .cancel-btn {
+            background: #E5E7EB;
+            color: black;
+            margin-top: 12px;
+        }
+        .info-blue {
+            background: #EFF6FF;
+            padding: 16px;
+            border-radius: 12px;
+            margin-top: 24px;
+            font-size: 14px;
+            color: var(--black);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="delete-header">
+            <a href="edit-profile.html" style="color: black;"><i data-lucide="arrow-left"></i></a>
+            <h2 style="margin-left: 16px; font-size: 18px; font-weight: bold;">Delete Account</h2>
+        </header>
+
+        <main class="p-24" style="padding-bottom: 100px;">
+            <div class="warning-box">
+                <div class="warning-title">
+                    <i data-lucide="alert-triangle" size="24" style="margin-right: 12px;"></i>
+                    <span>Warning: This action is permanent</span>
+                </div>
+                <p style="font-size: 14px;">Deleting your account will permanently remove:</p>
+                <div class="warning-list">
+                    • Your profile and farm details<br>
+                    • All query history<br>
+                    • Saved recommendations<br>
+                    • Personalized settings<br>
+                    • All associated data
+                </div>
+            </div>
+
+            <label class="input-label">Reason for leaving (optional)</label>
+            <textarea class="input-field reason-box" placeholder="Help us improve by sharing why you're leaving..."></textarea>
+
+            <label class="input-label">Type "DELETE" to confirm</label>
+            <input type="text" class="input-field" placeholder="DELETE" style="text-transform: uppercase;">
+
+            <button class="btn-primary delete-btn">Permanently Delete Account</button>
+            <button class="btn-primary cancel-btn" onclick="window.location.href='settings.html'">Cancel</button>
+
+            <div class="info-blue">
+                Need a break instead? You can logout and come back anytime without losing your data.
+            </div>
+        </main>
+    </div>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

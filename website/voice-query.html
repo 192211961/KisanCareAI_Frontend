@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Query - KisanMitra</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .voice-header { padding: 40px 24px 12px; display: flex; align-items: center; }
+        .voice-main { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 24px; }
+        .mic-outer {
+            width: 220px; height: 220px;
+            background: #FEE2E2; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .mic-outer.listening { animation: pulse 1.2s ease-in-out infinite; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239,68,68,0.4); }
+            50% { transform: scale(1.04); box-shadow: 0 0 0 16px rgba(239,68,68,0); }
+        }
+        .mic-inner {
+            width: 148px; height: 148px;
+            background: var(--vibrant-green); border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15); cursor: pointer;
+            transition: background 0.2s;
+        }
+        .mic-inner.recording { background: #EF4444; }
+        .transcript-box {
+            background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 12px;
+            padding: 16px; margin-top: 20px; width: 100%; min-height: 60px;
+            font-size: 15px; color: #1a1a1a; text-align: left; display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="desktop-sidebar">
+            <div class="sidebar-logo">
+                <i data-lucide="sprout" size="32"></i>
+                <span>KisanMitra</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="home.html" class="sidebar-link"><i data-lucide="home"></i> Home</a>
+                <a href="disease-detection.html" class="sidebar-link"><i data-lucide="camera"></i> Crop Scan</a>
+                <a href="weather.html" class="sidebar-link"><i data-lucide="cloud-sun"></i> Weather</a>
+                <a href="ask-question.html" class="sidebar-link"><i data-lucide="message-square"></i> Ask AI</a>
+                <a href="history.html" class="sidebar-link"><i data-lucide="history"></i> History</a>
+                <a href="settings.html" class="sidebar-link"><i data-lucide="settings"></i> Settings</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="sidebar-link" style="color: var(--soft-red);"><i data-lucide="log-out"></i> Logout</a>
+            </div>
+        </aside>
+
+        <div class="main-content-layout">
+            <header class="voice-header">
+                <a href="home.html" style="color: #5C4D4A;"><i data-lucide="arrow-left"></i></a>
+                <h2 style="margin-left: 24px; font-size: 20px; font-weight: bold; color: #5C4D4A;">Voice Query</h2>
+            </header>
+
+        <main class="voice-main">
+            <div class="mic-outer" id="mic-outer">
+                <div class="mic-inner" id="mic-inner">
+                    <i data-lucide="mic" size="50" color="white"></i>
+                </div>
+            </div>
+
+            <h1 id="status-text" style="margin-top: 24px; font-size: 22px; font-weight: bold; color: #3E2723;">Tap to Speak</h1>
+            <p id="status-sub" style="margin-top: 8px; color: #8D8D8D; font-size: 15px;">Tap the mic and ask your farming question</p>
+
+            <div class="transcript-box" id="transcript-box"></div>
+            <div id="error-box" style="display:none; color:red; font-size:14px; margin-top:12px;"></div>
+
+            <button class="btn-primary" id="submit-voice-btn" style="display:none; margin-top:16px; width:100%;">
+                Submit as Question
+            </button>
+        </main>
+        </div> <!-- End of main-content-layout -->
+    </div>
+    <script type="module">
+        import { history } from './js/api.js?v=2.1';
+        import CONFIG from './js/config.js?v=2.1';
+
+        lucide.createIcons();
+
+        let keyIndex = 0;
+        const micOuter = document.getElementById('mic-outer');
+        const micInner = document.getElementById('mic-inner');
+        const statusText = document.getElementById('status-text');
+        const statusSub = document.getElementById('status-sub');
+        const transcriptBox = document.getElementById('transcript-box');
+        const submitBtn = document.getElementById('submit-voice-btn');
+        const errorBox = document.getElementById('error-box');
+        const email = localStorage.getItem('user_email');
+        let transcript = '', isListening = false, recognition = null;
+
+        if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            recognition = new SpeechRecognition();
+            recognition.interimResults = true; recognition.continuous = false; recognition.lang = 'en-IN';
+
+            recognition.onstart = () => { isListening = true; micOuter.classList.add('listening'); micInner.classList.add('recording'); statusText.textContent = 'Listening...'; statusSub.textContent = 'Speak clearly into your microphone'; errorBox.style.display = 'none'; };
+            recognition.onresult = (e) => { transcript = Array.from(e.results).map(r => r[0].transcript).join(''); transcriptBox.textContent = transcript; transcriptBox.style.display = 'block'; };
+            recognition.onend = () => { isListening = false; micOuter.classList.remove('listening'); micInner.classList.remove('recording'); if (transcript.trim()) { statusText.textContent = 'Voice captured!'; statusSub.textContent = 'Tap Submit to get AI advice'; submitBtn.style.display = 'block'; } else { statusText.textContent = 'Tap to Speak'; statusSub.textContent = 'No speech detected. Try again.'; } };
+            recognition.onerror = (e) => { isListening = false; micOuter.classList.remove('listening'); micInner.classList.remove('recording'); errorBox.textContent = 'Mic error: ' + e.error + '. Allow mic access in browser settings.'; errorBox.style.display = 'block'; statusText.textContent = 'Tap to Speak'; };
+        } else {
+            errorBox.textContent = 'Your browser does not support voice input. Please use Chrome/Edge.';
+            errorBox.style.display = 'block';
+        }
+
+        micInner.addEventListener('click', () => { if (!recognition) return; if (isListening) { recognition.stop(); } else { transcript = ''; transcriptBox.style.display = 'none'; submitBtn.style.display = 'none'; recognition.start(); } });
+
+        submitBtn.addEventListener('click', async () => {
+            const query = transcript.trim();
+            if (!query) {
+                errorBox.textContent = 'Speak a question first.';
+                errorBox.style.display = 'block';
+                return;
+            }
+            submitBtn.disabled = true; 
+            submitBtn.innerHTML = '<span class="spinner" style="border-top-color: white"></span>Getting AI response...';
+            errorBox.style.display = 'none';
+
+            try {
+                const apiKeys = CONFIG.GEMINI_API_KEYS;
+                let aiResponse = null;
+                
+                for (let attempt = 0; attempt < apiKeys.length; attempt++) {
+                    const apiKey = apiKeys[(keyIndex + attempt) % apiKeys.length];
+                    const url = `https://generativelanguage.googleapis.com/v1/models/${CONFIG.GEMINI_MODEL}:generateContent?key=${apiKey}`;
+                    
+                    try {
+                        console.log(`AI attempt ${attempt + 1} using key ${apiKey.substring(0, 8)}...`);
+                        const res = await fetch(url, { 
+                            method: 'POST', 
+                            headers: { 'Content-Type': 'application/json' }, 
+                            body: JSON.stringify({ 
+                                contents: [{ 
+                                    parts: [{ text: `You are 'Kisan Mitra', an expert agricultural assistant in India.\nUSER QUESTION: '${query}'\nAnswer strictly in the language of the query. Provide detailed, expert farming advice with bold headers.` }] 
+                                }], 
+                                generationConfig: { temperature: 0.7, maxOutputTokens: 2048 } 
+                            }) 
+                        });
+
+                        const data = await res.json();
+                        
+                        if (!res.ok) {
+                            console.error('Gemini error:', data.error);
+                            keyIndex++;
+                            continue;
+                        }
+
+                        aiResponse = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+                        if (aiResponse) {
+                            keyIndex = (keyIndex + attempt) % apiKeys.length;
+                            break;
+                        }
+                    } catch(e) {
+                        console.error('Fetch error:', e);
+                        keyIndex++;
+                    }
+                }
+
+                if (!aiResponse) throw new Error('AI could not provide a response at this time. Please check your internet or try again later.');
+
+                // Save to history
+                if (email) {
+                    try {
+                        await history.save({ email, query, response: aiResponse, is_disease: false });
+                    } catch(e) { console.warn('History save failed:', e); }
+                }
+
+                sessionStorage.setItem('ai_query', query);
+                sessionStorage.setItem('ai_response', aiResponse);
+                window.location.href = 'ai-response.html';
+            } catch (err) {
+                errorBox.textContent = err.message;
+                errorBox.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit as Question';
+            }
+        });
+    </script>
+</body>
+</html>

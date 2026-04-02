@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy & Security - KisanMitra</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .privacy-header {
+            padding: 40px 16px 12px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #EEEEEE;
+        }
+        .blue-card {
+            background: #E3F2FD;
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            margin-top: 16px;
+        }
+        .permissions-box {
+            background: var(--white);
+            border-radius: 12px;
+            margin-top: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        .permission-row {
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #F1F5F9;
+        }
+        .permission-row:last-child { border-bottom: none; }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 48px;
+            height: 24px;
+        }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: var(--light-grey);
+            transition: .4s;
+            border-radius: 24px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px; width: 18px;
+            left: 3px; bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider { background-color: var(--vibrant-green); }
+        input:checked + .slider:before { transform: translateX(24px); }
+        
+        .logout-btn {
+            background: #FEE2E2;
+            color: #DC2626;
+            padding: 16px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .tips-box {
+            background: #FFFBEB;
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 24px;
+            margin-bottom: 24px;
+            font-size: 13px;
+            color: var(--black);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="desktop-sidebar">
+            <div class="sidebar-logo">
+                <i data-lucide="sprout" size="32"></i>
+                <span>KisanMitra</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="home.html" class="sidebar-link"><i data-lucide="home"></i> Home</a>
+                <a href="disease-detection.html" class="sidebar-link"><i data-lucide="camera"></i> Crop Scan</a>
+                <a href="weather.html" class="sidebar-link"><i data-lucide="cloud-sun"></i> Weather</a>
+                <a href="ask-question.html" class="sidebar-link"><i data-lucide="message-square"></i> Ask AI</a>
+                <a href="history.html" class="sidebar-link"><i data-lucide="history"></i> History</a>
+                <a href="settings.html" class="sidebar-link active"><i data-lucide="settings"></i> Settings</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="sidebar-link" style="color: var(--soft-red);"><i data-lucide="log-out"></i> Logout</a>
+            </div>
+        </aside>
+
+        <div class="main-content-layout">
+            <header class="privacy-header">
+                <a href="settings.html" style="color: black;"><i data-lucide="arrow-left"></i></a>
+                <h2 style="margin-left: 16px; font-size: 18px; font-weight: bold;">Privacy & Security</h2>
+            </header>
+
+        <main class="p-24" style="padding-bottom: 100px;">
+            <div class="blue-card">
+                <i data-lucide="shield" color="#3B82F6"></i>
+                <div style="margin-left: 12px;">
+                    <p style="font-weight: bold; font-size: 16px;">Privacy Matters</p>
+                    <p style="font-size: 14px; color: var(--grey); margin-top: 4px;">Control how your data is used</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 24px; font-size: 16px; font-weight: bold;">App Permissions</h3>
+            <div class="permissions-box">
+                <div class="permission-row">
+                    <div style="display: flex; align-items: center;">
+                        <i data-lucide="map-pin" color="#3B82F6"></i>
+                        <div style="margin-left: 12px;">
+                            <p style="font-weight: bold; font-size: 14px;">Location Access</p>
+                            <p style="font-size: 12px; color: var(--grey);">Used for weather accuracy</p>
+                        </div>
+                    </div>
+                    <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                </div>
+                <div class="permission-row">
+                    <div style="display: flex; align-items: center;">
+                        <i data-lucide="camera" color="#A855F7"></i>
+                        <div style="margin-left: 12px;">
+                            <p style="font-weight: bold; font-size: 14px;">Camera Access</p>
+                            <p style="font-size: 12px; color: var(--grey);">Used for disease detection</p>
+                        </div>
+                    </div>
+                    <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                </div>
+                <div class="permission-row">
+                    <div style="display: flex; align-items: center;">
+                        <i data-lucide="mic" color="#3B82F6"></i>
+                        <div style="margin-left: 12px;">
+                            <p style="font-weight: bold; font-size: 14px;">Microphone Access</p>
+                            <p style="font-size: 12px; color: var(--grey);">Used for voice queries</p>
+                        </div>
+                    </div>
+                    <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                </div>
+            </div>
+
+            <a href="login.html" class="logout-btn">
+                <i data-lucide="log-out" size="20"></i>
+                <span style="margin-left: 8px;">Logout</span>
+            </a>
+
+            <div class="tips-box">
+                Your data is stored securely and is never shared with third parties without your explicit consent.
+            </div>
+        </main>
+        </div> <!-- End of main-content-layout -->
+    </div>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<resources>
+    <string name="app_name">KisanCare AI</string>
+    <string name="welcome_back">తిరిగి స్వాగతం!</string>
+    <string name="quick_actions">శీఘ్ర చర్యలు</string>
+    <string name="ask_question">ప్రశ్న\nఅడగండి</string>
+    <string name="voice_query">వాయిస్\nక్వెరీ</string>
+    <string name="disease_detection">వ్యాధి\nగుర్తింపు</string>
+    <string name="weather">వాతావరణం</string>
+    <string name="share_feedback">మీ\nఅభిప్రాయాన్ని పంచుకోండి</string>
+    <string name="recent_activity">ఇటీవలి కార్యాచరణ</string>
+    <string name="query_history">క్వెరీ చరిత్ర</string>
+    <string name="query_history_desc">గత ప్రశ్నలు మరియు సమాధానాలను చూడండి</string>
+    <string name="saved_advice">సేవ్ చేసిన సలహా</string>
+    <string name="saved_advice_desc">మీ బుక్‌మార్క్ చేసిన సిఫార్సులను యాక్సెస్ చేయండి</string>
+    <string name="home">హోమ్</string>
+    <string name="help">సహాయం</string>
+    <string name="settings">సెట్టింగులు</string>
+    <string name="todays_tip">నేటి చిట్కా</string>
+    <string name="view_all_tips">అన్ని చిట్కాలను చూడండి</string>
+    <string name="language_voice_preference">భాష మరియు వాయిస్ ప్రాధాన్యత</string>
+    <string name="customize_experience">మీ అనుభవాన్ని అనుకూలీకరించండి</string>
+    <string name="choose_language_desc">మీకు నచ్చిన భాష మరియు వాయిస్ సెట్టింగ్‌లను ఎంచుకోండి</string>
+    <string name="response_language">ప్రతిస్పందన భాష</string>
+    <string name="voice_output">వాయిస్ అవుట్‌పుట్</string>
+    <string name="enabled">ప్రారంభించబడింది</string>
+    <string name="disabled">నిలిపివేయబడింది</string>
+    <string name="complete_setup">సెటప్ పూర్తి చేయండి</string>
+
+    <!-- Help & FAQ -->
+    <string name="help_faq_title">సహాయం &amp; తరచుగా అడిగే ప్రశ్నలు</string>
+    <string name="about_kisan_mitra">KisanCare AI గురించి</string>
+    <string name="about_feature_1">• ఫోటోల నుండి AI-ఆధారిత పంట వ్యాధి గుర్తింపు</string>
+    <string name="about_feature_2">• మీ ప్రాంతం కోసం నిజ-సమయ ఖచ్చితమైన వాతావరణ అంచనాలు</string>
+    <string name="about_feature_3">• వాయిస్ మరియు టెక్స్ట్ ద్వారా నిపుణుల వ్యవసాయ సలహా</string>
+    <string name="about_feature_4">• మెరుగైన ప్రాప్యత కోసం బహుళ-భాష మద్దతు</string>
+    <string name="contact_us">మమ్మల్ని సంప్రదించండి</string>
+    <string name="contact_reach_out">ఏవైనా సందేహాల కోసం, మమ్మల్ని సంప్రదించండి:</string>
+    <string name="faq_title">తరచుగా అడిగే ప్రశ్నలు</string>
+
+    <!-- FAQ Item 1 -->
+    <string name="faq_q1">నేను యాప్‌ని ఉపయోగించి పంట వ్యాధులను ఎలా గుర్తించగలను?</string>
+    <string name="faq_a1">హోమ్ స్క్రీన్‌కి వెళ్లి \'Disease Detection\' పై క్లిక్ చేయండి. మీ కెమెరాను ప్రభావిత పంట భాగానికి చూపిస్తూ ఫోటో తీయండి. మా AI దానిని విశ్లేషించి రోగనిర్ధారణ చేస్తుంది.</string>
+    
+    <!-- FAQ Item 2 -->
+    <string name="faq_q2">AI సలహా ఎంత ఖచ్చితమైనది?</string>
+    <string name="faq_a2">మా AI విస్తృతమైన వ్యవసాయ డేటాసెట్‌లపై శిక్షణ పొందింది. ఇది చాలా ఖచ్చితమైనది అయినప్పటికీ, క్లిష్టమైన నిర్ణయాల కోసం స్థానిక వ్యవసాయ నిపుణుడిని సంప్రదించమని మేము సిఫార్సు చేస్తున్నాము.</string>
+    
+    <!-- FAQ Item 3 -->
+    <string name="faq_q3">నేను నా స్థానిక భాషలో యాప్‌ని ఉపయోగించవచ్చా?</string>
+    <string name="faq_a3">అవును, KisanCare AI బహుళ ప్రాంతీయ భాషలకు మద్దతు ఇస్తుంది. మీరు \'సెట్టింగ్‌లు\' మెను నుండి మీ భాషా ప్రాధాన్యతను మార్చుకోవచ్చు।</string>
+    
+    <!-- FAQ Item 4 -->
+    <string name="faq_q4">వాతావరణ సూచన ఆఫ్‌లైన్‌లో పని చేస్తుందా?</string>
+    <string name="faq_a4">నిజ-సమయ వాతావరణ అప్డేట్‌లను పొందడానికి మీకు ఇంటర్నెట్ కనెక్షన్ అవసరం. అయితే, మీరు చివరగా చూసిన సూచన ఆఫ్‌లైన్‌లో అందుబాటులో ఉండవచ్చు.</string>
+    
+    <!-- FAQ Item 5 -->
+    <string name="faq_q5">వాయిస్ క్వెరీని నేను ఎలా ఉపయోగించాలి?</string>
+    <string name="faq_a5">హోమ్ స్క్రీన్‌లోని \'Voice Query\' బటన్‌పై ట్యాప్ చేసి మీ ప్రశ్నను చెప్పండి. యాప్ మీ వాయిస్‌ని టెక్స్ట్‌గా మార్చి AI ప్రతిస్పందనను అందిస్తుంది.</string>
+    
+    <!-- FAQ Item 6 -->
+    <string name="faq_q6">నా వ్యక్తిగత డేటా సురక్షితమేనా?</string>
+    <string name="faq_a6">అవును, మేము డేటా గోప్యతను సీరియస్‌గా తీసుకుంటాము. మీ ప్రొఫైల్ మరియు క్వెరీ హిస్టరీ సురక్షితంగా నిల్వ చేయబడతాయి మరియు మీ అనుమతి లేకుండా మూడవ పక్షాలకు షేర్ చేయబడవు.</string>
+    
+    <!-- FAQ Item 7 -->
+    <string name="faq_q7">నేను ఉపయోగకరమైన వ్యవసాయ సలహాను ఎలా సేవ్ చేయగలను?</string>
+    <string name="faq_a7">మీరు ఒక ప్రశ్నకు ప్రతిస్పందన పొందినప్పుడు, దానిని తర్వాత సులభంగా చూసుకోవడానికి \'Save\' ఐకాన్‌పై ట్యాప్ చేసి మీ \'Saved Advice\' విభాగంలో చేర్చుకోవచ్చు.</string>
+    
+    <!-- FAQ Item 8 -->
+    <string name="faq_q8">యాప్ క్రాష్ అయితే నేను ఏమి చేయాలి?</string>
+    <string name="faq_a8">మీరు యాప్ యొక్క లేటెస్ట్ వెర్షన్‌ను ఉపయోగిస్తున్నారని నిర్ధారించుకోండి. సమస్య కొనసాగితే, పైన అందించిన ఇమెయిల్ లేదా ఫోన్ ద్వారా మా సపోర్ట్ టీమ్‌ను సంప్రదించవచ్చు.</string>
+
+    <!-- Personalized Tips -->
+    <string name="tips_title">వ్యక్తిగతీకరించిన చిట్కాలు</string>
+    <string name="tips_info_desc">మీ పొలం స్థానం, పంటలు మరియు ప్రస్తుత సీజన్ ఆధారంగా ఈ చిట్కాలు ప్రతిరోజూ రూపొందించబడతాయి.</string>
+    <string name="tip_1_title">రుతుపవనాల ముందు\nమట్టి తయారీ</string>
+    <string name="tip_1_desc">రుతుపవనాలు రాకముందే మీ మట్టికి సేంద్రియ ఎరువును కలపండి. ఇది నీటి నిలుపుదల మరియు పోషకాల లభ్యతను మెరుగుపరుస్తుంది.</string>
+    <string name="tip_2_title">పత్తి పంటకు తెగుళ్ల నివారణ</string>
+    <string name="tip_2_desc">బొల్ వార్మ్ (boll worm) ఉధృతిని గమనించండి. ఫెరోమోన్ ట్రాప్‌లను వాడండి మరియు తెగుళ్లు పెరగకుండా పొలం పరిశుభ్రతను పాటించండి.</string>
+    <string name="tip_3_title">నీటి పారుదల నిర్వహణ</string>
+    <string name="tip_3_desc">బాష్పీభవన నష్టాన్ని తగ్గించడానికి ఉదయాన్నే లేదా సాయంత్రం వేళల్లో పంటలకు నీరు పెట్టండి. మెరుగైన సామర్థ్యం కోసం డ్రిప్ ఇరిగేషన్ వాడండి.</string>
+    <string name="tip_4_title">పోషకాల నిర్వహణ</string>
+    <string name="tip_4_desc">మట్టి పరీక్ష ఫలితాల ఆధారంగా ఎరువులను వాడండి. అతిగా వాడటం వల్ల మట్టి ఆరోగ్యం దెబ్బతింటుంది మరియు డబ్బు వృధా అవుతుంది.</string>
+    <string name="tip_5_title">వాతావరణ ఆధారిత కోత</string>
+    <string name="tip_5_desc">కోతకు ముందు స్థానిక వాతావరణాన్ని తనిఖీ చేయండి. పంట పాడవకుండా ఉండటానికి కనీసం 3 రోజుల పాటు పొడి వాతావరణం ఉండేలా చూసుకోండి.</string>
+    <string name="tip_6_title">సేంద్రియ ఎరువులు</string>
+    <string name="tip_6_desc">మట్టిని సహజంగా సుసంపన్నం చేయడానికి మరియు దాని దీర్ఘకాలిక సారవంతాన్ని మెరుగుపరచడానికి వేప పిండి లేదా వర్మీ కంపోస్ట్‌ను వాడండి.</string>
+    <string name="tip_7_title">పంట మార్పిడి</string>
+    <string name="tip_7_desc">తెగుళ్ల చక్రాలను అరికట్టడానికి మరియు మట్టి పోషకాలను తిరిగి నింపడానికి పంట మార్పిడి చేయండి. ఒకే పంటను వరుసగా రెండుసార్లు వేయకండి.</string>
+    <string name="tip_8_title">సమీకృత తెగుళ్ల నివారణ</string>
+    <string name="tip_8_desc">రసాయన పురుగుమందుల జోలికి వెళ్లేముందు, సేంద్రియ నియంత్రణ పద్ధతులు మరియు ఫెరోమోన్ ట్రాప్‌లను వాడండి.</string>
+    <string name="tip_9_title">కోత అనంతర నిల్వ</string>
+    <string name="tip_9_desc">ధాన్యాన్ని చల్లని, పొడి ప్రదేశంలో నిల్వ చేయండి. బూజు మరియు కీటకాల దాడులను నివారించడానికి తేమ శాతం 12% కంటే తక్కువగా ఉండేలా చూసుకోండి.</string>
+    <string name="tip_10_title">నీటి పొదుపు</string>
+    <string name="tip_10_desc">మట్టిలో తేమను నిలుపుకోవడానికి మల్చింగ్ (Mulching) చేయండి. ఇది నీటి అవసరాన్ని తగ్గిస్తుంది మరియు వేసవిలో వేర్లను చల్లగా ఉంచుతుంది.</string>
+    <string name="tips_update_info">చిట్కాలు ప్రతిరోజూ ఉదయం 6:00 గంటలకు అప్‌డేట్ చేయబడతాయి</string>
+
+    <!-- Feedback -->
+    <string name="rate_experience">మీ అనుభవాన్ని రేట్ చేయండి</string>
+    <string name="share_feedback_title">మీ అభిప్రాయాన్ని పంచుకోండి</string>
+    <string name="feedback_help_desc">మీ అభిప్రాయం మా AI సిఫార్సులు మరియు యాప్ అనుభవాన్ని మెరుగుపరచడంలో మాకు సహాయపడుతుంది</string>
+    <string name="how_rate_experience">మీ అనుభవాన్ని మీరు ఎలా రేట్ చేస్తారు?</string>
+    <string name="tap_star_rate">రేట్ చేయడానికి నక్షత్రంపై ట్యాప్ చేయండి</string>
+    <string name="tell_us_more">మాకు మరిన్ని వివరాలు తెలియజేయండి (ఐచ్ఛికం)</string>
+    <string name="feedback_hint">మీ ఆలోచనలు, సూచనలు లేదా సమస్యలను పంచుకోండి</string>
+    <string name="aspect_rating_title">మీరు ఏ అంశాన్ని రేట్ చేస్తున్నారు?</string>
+    <string name="ai_accuracy">AI ఖచ్చితత్వం</string>
+    <string name="app_usability">యాప్ వినియోగం</string>
+    <string name="response_speed">ప్రతిస్పందన వేగం</string>
+    <string name="overall_experience">మొత్తం\nఅనుభవం</string>
+    <string name="submit_feedback">అభిప్రాయాన్ని పంపండి</string>
+    <string name="skip_for_now">ప్రస్తుతానికి వద్దు</string>
+
+    <!-- Feedback Success -->
+    <string name="feedback">అభిప్రాయం</string>
+    <string name="thank_you">ధన్యవాదాలు!</string>
+    <string name="feedback_success_desc">మీ అభిప్రాయం KisanCare AIని మెరుగుపరచడంలో మాకు సహాయపడుతుంది</string>
+    <!-- Location Suggestion -->
+    <string name="location_suggestion_title">స్థాన సేవ నిలిపివేయబడింది</string>
+    <string name="location_suggestion_desc">ఖచ్చితమైన వాతావరణం మరియు వ్యవసాయ సలహాలను పొందడానికి దయచేసి స్థానాన్ని ఆన్ చేయండి.</string>
+    <string name="location_turn_on">ఆన్ చేయండి</string>
+
+    <!-- Ask a Question -->
+    <string name="ask_a_question_title">ప్రశ్న అడగండి</string>
+    <string name="ask_any_farming">ఏదైనా వ్యవసాయ ప్రశ్న అడగండి</string>
+    <string name="ai_personalized_advice">మా AI మీ ఫార్మ్ వివరాలు మరియు ప్రస్తుత పరిస్థితుల ఆధారంగా మీకు వ్యక్తిగతీకరించిన సలహాలను అందిస్తుంది.</string>
+    <string name="your_question">మీ ప్రశ్న</string>
+    <string name="question_hint">మీ వ్యవసాయ ప్రశ్నను ఇక్కడ టైప్ చేయండి...</string>
+    <string name="submit_query">క్వెరీని పంపండి</string>
+    <string name="suggested_questions">సూచించబడిన ప్రశ్నలు</string>
+    <string name="suggested_q1">పత్తిలో పేనుబంకను ఎలా నివారించాలి?</string>
+    <string name="suggested_q2">గోధుమ పంటకు ఉత్తమమైన ఎరువు ఏది?</string>
+    <string name="suggested_q3">వరి కోత ఎప్పుడు చేయాలి?</string>
+    <string name="suggested_q4">సేంద్రీయ తెగుళ్ల నివారణ పద్ధతులు?</string>
+
+    <!-- AI Response -->
+    <string name="ai_response_title">AI ప్రతిస్పందన</string>
+    <string name="your_question_label">మీ ప్రశ్న:</string>
+    <string name="play_audio">ఆడియో ప్లే చేయండి</string>
+    <string name="save">సేవ్ చేయండి</string>
+    <string name="was_this_helpful">ఇది మీకు సహాయపడిందా?</string>
+    <string name="ask_another_question">💬 మరొక ప్రశ్న అడగండి</string>
+    <string name="back_to_home">హోమ్‌కి వెళ్లండి</string>
+    <string name="ai_note">గమనిక: ఈ సిఫార్సులు సామాన్య వ్యవసాయ పద్ధతుల ఆధారంగా AI ద్వారా రూపొందించబడ్డాయి. క్లిష్టమైన నిర్ణయాల కోసం, దయచేసి స్థానిక వ్యవసాయ నిపుణులు లేదా విస్తరణ అధికారులను సంప్రదించండి.</string>
+    <string name="consulting_ai">KisanCare AIని సంప్రదిస్తున్నాము...</string>
+    <string name="analyzing_image">KisanCare AIతో చిత్రాన్ని విశ్లేషిస్తున్నాము...</string>
+    <string name="upload_photo_desc">వివరణాత్మక వ్యాధి విశ్లేషణ కోసం దయచేసి మీ మొక్క యొక్క స్పష్టంగా కనిపించే ఫోటోను అప్‌లోడ్ చేయండి.</string>
+    <string name="advice_saved">ఆలోచన బుక్‌మార్క్‌లలో సేవ్ చేయబడింది</string>
+    <string name="initializing_audio">ఆడియో సిస్టమ్ ప్రారంభమవుతోంది...</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">సెట్టింగ్‌లు</string>
+    <string name="personal_info_menu">👤 వ్యక్తిగత సమాచారం</string>
+    <string name="language_voice_menu">🌐 భాష మరియు వాయిస్ సెట్టింగ్‌లు</string>
+    <string name="notifications_menu">🔔 నోటిఫికేషన్ సెట్టింగ్‌లు</string>
+    <string name="weather_menu">☁️ వాతావరణం</string>
+    <string name="privacy_security_menu">🛡️ గోప్యత మరియు భద్రత</string>
+
+    <!-- Notification Settings -->
+    <string name="notif_settings_title">నోటిఫికేషన్ సెట్టింగ్‌లు</string>
+    <string name="manage_notifications">నోటిఫికేషన్‌లను నిర్వహించండి</string>
+    <string name="manage_notifications_desc">మీరు ఏ నోటిఫికేషన్‌లను స్వీకరించాలనుకుంటున్నారో ఎంచుకోండి</string>
+    <string name="weather_alerts">వాతావరణ హెచ్చరికలు</string>
+    <string name="weather_alerts_desc">తీవ్రమైన వాతావరణ పరిస్థితుల కోసం హెచ్చరికలను స్వీకరించండి</string>
+    <string name="daily_farming_tips">రోజువారీ వ్యవసాయ చిట్కాలు</string>
+    <string name="daily_farming_tips_desc">ప్రతిరోజూ వ్యక్తిగత వ్యవసాయ చిట్కాలను స్వీకరించండి</string>
+    <string name="notif_preferences">నోటిఫికేషన్ ప్రాధాన్యతలు</string>
+    <string name="enable_sound">ధ్వనిని ప్రారంభించండి</string>
+    <string name="enable_vibration">వైబ్రేషన్‌ను ప్రారంభించండి</string>
+    <string name="dnd_mode">అంతరాయం కలిగించవద్దు (రాత్రి 9 గం - ఉదయం 7 గం)</string>
+    <string name="save_settings">సెట్టింగ్‌లను సేవ్ చేయండి</string>
+    <string name="notif_note">గమనిక: మీ భద్రత మరియు పంట రక్షణను నిర్ధారించడానికి మీ సెట్టింగ్‌లతో సంబంధం లేకుండా క్లిష్టమైన వాతావరణ హెచ్చరికలు ఎల్లప్పుడూ బట్వాడా చేయబడతాయి.</string>
+
+    <!-- Privacy & Security -->
+    <string name="privacy_security_title">గోప్యత మరియు భద్రత</string>
+    <string name="privacy_matters">మీ గోప్యత ముఖ్యం</string>
+    <string name="privacy_matters_desc">యాప్ మీ డేటా మరియు పరికర ఫీచర్‌లను ఎలా ఉపయోగిస్తుందో నియంత్రించండి</string>
+    <string name="app_permissions">యాప్ అనుమతులు</string>
+    <string name="location_access">స్థాన ప్రాప్యత</string>
+    <string name="location_access_desc">వాతావరణ నవీకరణల కోసం</string>
+    <string name="camera_access">కెమెరా ప్రాప్యత</string>
+    <string name="camera_access_desc">వ్యాధి గుర్తింపు మరియు చిత్ర అప్‌లోడ్‌ల కోసం</string>
+    <string name="mic_access">మైక్రోఫోన్ ప్రాప్యత</string>
+    <string name="mic_access_desc">వాయిస్ ప్రశ్నలు మరియు ఆదేశాల కోసం</string>
+    <string name="notifications_access">నోటిఫికేషన్‌లు</string>
+    <string name="notifications_access_desc">వాతావరణ హెచ్చరికలు మరియు నవీకరణల కోసం</string>
+    <string name="logout">లాగ్ అవుట్</string>
+    <string name="privacy_note">గమనిక: మీ డేటా సురక్షితంగా నిల్వ చేయబడుతుంది మరియు మీ స్పష్టమైన సమ్మతి లేకుండా మూడవ పక్షాలతో ఎప్పుడూ భాగస్వామ్యం చేయబడదు.</string>
+
+    <!-- Dialogs & Toasts -->
+    <string name="settings_preserved">అన్ని సెట్టింగ్‌లు భద్రపరచబడ్డాయి!</string>
+    <string name="logout_dialog_title">లాగ్ అవుట్</string>
+    <string name="logout_confirm_msg">మీరు లాగ్ అవుట్ చేయాలనుకుంటున్నారా? దయచేసి ధృవీకరించండి.</string>
+    <string name="yes">అవును</string>
+    <string name="no">కాదు</string>
+    <string name="logging_out">లాగ్ అవుట్ అవుతోంది...</string>
+    <string name="camera_denied">కెమెరా అనుమతి నిరాకరించబడింది</string>
+    <string name="mic_denied">మైక్రోఫోన్ అనుమతి నిరాకరించబడింది</string>
+</resources>

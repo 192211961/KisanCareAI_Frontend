@@ -1,0 +1,198 @@
+<resources>
+    <string name="app_name">KisanCare AI</string>
+    <string name="welcome_back">वापस स्वागत है!</string>
+    <string name="quick_actions">त्वरित कार्रवाई</string>
+    <string name="ask_question">प्रश्न\nपूछें</string>
+    <string name="voice_query">वॉयस\nक्वेरी</string>
+    <string name="disease_detection">रोग\nपहचान</string>
+    <string name="weather">मौसम</string>
+    <string name="share_feedback">अपनी\nप्रतिक्रिया दें</string>
+    <string name="recent_activity">हाल की गतिविधि</string>
+    <string name="query_history">क्वेरी इतिहास</string>
+    <string name="query_history_desc">पिछले प्रश्न और उत्तर देखें</string>
+    <string name="saved_advice">सहेजी गई सलाह</string>
+    <string name="saved_advice_desc">अपनी बुकमार्क की गई सिफारिशों तक पहुंचें</string>
+    <string name="home">होम</string>
+    <string name="help">सहायता</string>
+    <string name="settings">सेटिंग्स</string>
+    <string name="todays_tip">आज की टिप</string>
+    <string name="view_all_tips">सभी टिप्स देखें</string>
+    <string name="language_voice_preference">भाषा और वॉयस प्राथमिकता</string>
+    <string name="customize_experience">अपना अनुभव कस्टमाइज़ करें</string>
+    <string name="choose_language_desc">अपनी पसंदीदा भाषा और वॉयस सेटिंग्स चुनें</string>
+    <string name="response_language">प्रतिक्रिया भाषा</string>
+    <string name="voice_output">वॉयस आउटपुट</string>
+    <string name="enabled">सक्षम</string>
+    <string name="disabled">अक्षम</string>
+    <string name="complete_setup">सेटअप पूरा करें</string>
+
+    <!-- Help & FAQ -->
+    <string name="help_faq_title">सहायता और अक्सर पूछे जाने वाले प्रश्न</string>
+    <string name="about_kisan_mitra">KisanCare AI के बारे में</string>
+    <string name="about_feature_1">• फोटो से एआई-संचालित फसल रोग की पहचान</string>
+    <string name="about_feature_2">• आपके क्षेत्र के लिए वास्तविक समय में सटीक मौसम का अनुमान</string>
+    <string name="about_feature_3">• आवाज और टेक्स्ट के माध्यम से विशेषज्ञ कृषि सलाह</string>
+    <string name="about_feature_4">• बेहतर पहुंच के लिए बहु-भाषा समर्थन</string>
+    <string name="contact_us">हमसे संपर्क करें</string>
+    <string name="contact_reach_out">किसी भी प्रश्न के लिए, हमसे संपर्क करें:</string>
+    <string name="faq_title">अक्सर पूछे जाने वाले प्रश्न</string>
+
+    <!-- FAQ Item 1 -->
+    <string name="faq_q1">मैं ऐप का उपयोग करके फसल रोगों का पता कैसे लगाऊं?</string>
+    <string name="faq_a1">होम स्क्रीन पर जाएं और \'रोग पहचान\' पर क्लिक करें। अपने कैमरे को प्रभावित फसल के हिस्से पर टिकाएं और एक फोटो लें। हमारा एआई इसका विश्लेषण करेगा और निदान प्रदान करेगा।</string>
+    
+    <!-- FAQ Item 2 -->
+    <string name="faq_q2">एआई सलाह कितनी सटीक है?</string>
+    <string name="faq_a2">हमारा एआई व्यापक कृषि डेटासेट पर प्रशिक्षित है। हालांकि यह अत्यधिक सटीक है, हम महत्वपूर्ण निर्णयों के लिए स्थानीय कृषि विशेषज्ञ से परामर्श करने की सलाह देते हैं।</string>
+    
+    <!-- FAQ Item 3 -->
+    <string name="faq_q3">क्या मैं अपनी स्थानीय भाषा में ऐप का उपयोग कर सकता हूं?</string>
+    <string name="faq_a3">हां, KisanCare AI कई क्षेत्रीय भाषाओं का समर्थन करता है। आप \'सेटिंग्स\' मेनू से अपनी भाषा प्राथमिकता बदल सकते हैं।</string>
+    
+    <!-- FAQ Item 4 -->
+    <string name="faq_q4">क्या मौसम का पूर्वानुमान ऑफलाइन काम करता है?</string>
+    <string name="faq_a4">वास्तविक समय के मौसम के अपडेट प्राप्त करने के लिए आपको एक सक्रिय इंटरनेट कनेक्शन की आवश्यकता है। हालांकि, आपका पिछला देखा गया पूर्वानुमान ऑफलाइन देखने के लिए उपलब्ध हो सकता है।</string>
+    
+    <!-- FAQ Item 5 -->
+    <string name="faq_q5">मैं वॉयस क्वेरी का उपयोग कैसे करूं?</string>
+    <string name="faq_a5">बस होम स्क्रीन पर \'वॉयस क्वेरी\' बटन पर टैप करें और अपना प्रश्न बोलें। ऐप आपकी आवाज़ को ट्रांसक्राइब करेगा और एआई प्रतिक्रिया प्रदान करेगा।</string>
+    
+    <!-- FAQ Item 6 -->
+    <string name="faq_q6">क्या मेरा व्यक्तिगत डेटा सुरक्षित है?</string>
+    <string name="faq_a6">हां, हम डेटा गोपनीयता को गंभीरता से लेते हैं। आपकी प्रोफ़ाइल और क्वेरी इतिहास सुरक्षित रूप से संग्रहीत हैं और आपकी सहमति के बिना तीसरे पक्ष के साथ साझा नहीं किए जाते हैं।</string>
+    
+    <!-- FAQ Item 7 -->
+    <string name="faq_q7">मैं उपयोगी कृषि सलाह कैसे बचा सकता हूं?</string>
+    <string name="faq_a7">जब आप किसी प्रश्न की प्रतिक्रिया प्राप्त करते हैं, तो आप उसे बाद में आसानी से एक्सेस करने के लिए अपने \'सहेजी गई सलाह\' अनुभाग में जोड़ने के लिए \'सहेजें\' आइकन पर टैप कर सकते हैं।</string>
+    
+    <!-- FAQ Item 8 -->
+    <string name="faq_q8">अगर ऐप क्रैश हो जाए तो मुझे क्या करना चाहिए?</string>
+    <string name="faq_a8">कृपया सुनिश्चित करें कि आप ऐप के नवीनतम संस्करण का उपयोग कर रहे हैं। यदि समस्या बनी रहती है, तो आप ऊपर दिए गए ईमेल या फोन के माध्यम से हमारी सहायता टीम से संपर्क कर सकते हैं।</string>
+
+    <!-- Personalized Tips -->
+    <string name="tips_title">व्यक्तिगत सुझाव</string>
+    <string name="tips_info_desc">ये सुझाव आपके खेत के स्थान, फसलों और वर्तमान मौसम के आधार पर प्रतिदिन तैयार किए जाते हैं।</string>
+    <string name="tip_1_title">मानसून-पूर्व\nमिट्टी की तैयारी</string>
+    <string name="tip_1_desc">मानसून आने से पहले अपनी मिट्टी में जैविक खाद डालें। इससे जल धारण क्षमता और पोषक तत्वों की उपलब्धता में सुधार होता है।</string>
+    <string name="tip_2_title">कपास के लिए कीट नियंत्रण</string>
+    <string name="tip_2_desc">बोल वर्म के संक्रमण की निगरानी करें। फेरोमोन ट्रैप का उपयोग करें और कीटों को बढ़ने से रोकने के लिए खेत की स्वच्छता बनाए रखें।</string>
+    <string name="tip_3_title">सिंचाई प्रबंधन</string>
+    <string name="tip_3_desc">वाष्पीकरण के नुकसान को कम करने के लिए फसलों को सुबह जल्दी या देर शाम को पानी दें। बेहतर दक्षता के लिए ड्रिप सिंचाई का उपयोग करें।</string>
+    <string name="tip_4_title">पोषक तत्व प्रबंधन</string>
+    <string name="tip_4_desc">मिट्टी परीक्षण के परिणामों के आधार पर उर्वरक डालें। अधिक प्रयोग मिट्टी के स्वास्थ्य को नुकसान पहुंचा सकता है और पैसा बर्बाद कर सकता है।</string>
+    <string name="tip_5_title">मौसम आधारित कटाई</string>
+    <string name="tip_5_desc">कटाई से पहले स्थानीय मौसम की जांच करें। फसल खराब होने से बचाने के लिए कम से कम 3 दिनों तक शुष्क स्थिति सुनिश्चित करें।</string>
+    <string name="tip_6_title">जैविक खाद</string>
+    <string name="tip_6_desc">मिट्टी को प्राकृतिक रूप से समृद्ध करने और इसकी दीर्घकालिक उर्वरता में सुधार करने के लिए नीम की खली या वर्मीकम्पोस्ट का उपयोग करें।</string>
+    <string name="tip_7_title">फसल चक्र</string>
+    <string name="tip_7_desc">कीट चक्रों को तोड़ने और मिट्टी के पोषक तत्वों को फिर से भरने के लिए फसल चक्र अपनाएं। एक ही फसल को लगातार दो बार न लगाएं।</string>
+    <string name="tip_8_title">एकीकृत कीट प्रबंधन</string>
+    <string name="tip_8_desc">सुरक्षित फसल के लिए रासायनिक कीटनाशकों का सहारा लेने से पहले जैविक नियंत्रण और फेरोमोन ट्रैप का उपयोग करें।</string>
+    <string name="tip_9_title">कटाई के बाद भंडारण</string>
+    <string name="tip_9_desc">अनाज को ठंडी, सूखी जगह पर स्टोर करें। फफूंद और कीटों के हमलों से बचने के लिए सुनिश्चित करें कि नमी की मात्रा 12% से कम हो।</string>
+    <string name="tip_10_title">जल संरक्षण</string>
+    <string name="tip_10_desc">मिट्टी की नमी बनाए रखने के लिए अपने खेतों में मल्चिंग करें। इससे सिंचाई की आवृत्ति कम हो जाती है और गर्मी में जड़ें ठंडी रहती हैं।</string>
+    <string name="tips_update_info">सुझाव प्रतिदिन सुबह 6:00 बजे अपडेट किए जाते हैं</string>
+
+    <!-- Feedback -->
+    <string name="rate_experience">अपने अनुभव को रेट करें</string>
+    <string name="share_feedback_title">अपनी प्रतिक्रिया साझा करें</string>
+    <string name="feedback_help_desc">आपकी प्रतिक्रिया हमें हमारे एआई सुझावों और ऐप अनुभव को बेहतर बनाने में मदद करती है</string>
+    <string name="how_rate_experience">आप अपने अनुभव को कैसे रेट करेंगे?</string>
+    <string name="tap_star_rate">रेट करने के लिए एक स्टार पर टैप करें</string>
+    <string name="tell_us_more">हमें और बताएं (वैकल्पिक)</string>
+    <string name="feedback_hint">अपने विचार, सुझाव साझा करें या समस्याओं की रिपोर्ट करें</string>
+    <string name="aspect_rating_title">आप किस पहलू को रेटिंग दे रहे हैं?</string>
+    <string name="ai_accuracy">एआई सटीकता</string>
+    <string name="app_usability">ऐप उपयोगिता</string>
+    <string name="response_speed">प्रतिक्रिया की गति</string>
+    <string name="overall_experience">समग्र\nअनुभव</string>
+    <string name="submit_feedback">प्रतिक्रिया सबमिट करें</string>
+    <string name="skip_for_now">अभी छोड़ें</string>
+
+    <!-- Feedback Success -->
+    <string name="feedback">प्रतिक्रिया</string>
+    <string name="thank_you">धन्यवाद!</string>
+    <string name="feedback_success_desc">आपकी प्रतिक्रिया हमें KisanCare AI को बेहतर बनाने में मदद करती है</string>
+    <!-- Location Suggestion -->
+    <string name="location_suggestion_title">स्थान सेवा बंद है</string>
+    <string name="location_suggestion_desc">सटीक मौसम और कृषि सलाह पाने के लिए कृपया स्थान चालू करें।</string>
+    <string name="location_turn_on">चालू करें</string>
+
+    <!-- Ask a Question -->
+    <string name="ask_a_question_title">प्रश्न पूछें</string>
+    <string name="ask_any_farming">खेती से जुड़ा कोई भी प्रश्न पूछें</string>
+    <string name="ai_personalized_advice">हमारा एआई आपके खेत के विवरण और वर्तमान स्थितियों के आधार पर व्यक्तिगत सलाह प्रदान करेगा।</string>
+    <string name="your_question">आपका प्रश्न</string>
+    <string name="question_hint">अपना खेती का प्रश्न यहाँ टाइप करें...</string>
+    <string name="submit_query">क्वेरी सबमिट करें</string>
+    <string name="suggested_questions">सुझाए गए प्रश्न</string>
+    <string name="suggested_q1">कपास में एफिड्स को कैसे नियंत्रित करें?</string>
+    <string name="suggested_q2">गेहूं की फसल के लिए सबसे अच्छा उर्वरक?</string>
+    <string name="suggested_q3">चावल की कटाई कब करें?</string>
+    <string name="suggested_q4">जैविक कीट नियंत्रण के तरीके?</string>
+
+    <!-- AI Response -->
+    <string name="ai_response_title">एआई प्रतिक्रिया</string>
+    <string name="your_question_label">आपका प्रश्न:</string>
+    <string name="play_audio">ऑडियो चलाएं</string>
+    <string name="save">सहेजें</string>
+    <string name="was_this_helpful">क्या यह मददगार था?</string>
+    <string name="ask_another_question">💬 एक और प्रश्न पूछें</string>
+    <string name="back_to_home">होम पर वापस जाएं</string>
+    <string name="ai_note">नोट: ये सिफारिशें सामान्य कृषि पद्धतियों के आधार पर एआई-जनरेटेड हैं। महत्वपूर्ण निर्णयों के लिए, कृपया स्थानीय कृषि विशेषज्ञों या विस्तार अधिकारियों से परामर्श करें।</string>
+    <string name="consulting_ai">KisanCare AI से परामर्श कर रहे हैं...</string>
+    <string name="analyzing_image">KisanCare AI के साथ छवि का विश्लेषण कर रहे हैं...</string>
+    <string name="upload_photo_desc">विस्तृत रोग विश्लेषण के लिए कृपया अपने पौधे की स्पष्ट दिखने वाली फोटो अपलोड करें।</string>
+    <string name="advice_saved">सलाह बुकमार्क में सहेजी गई</string>
+    <string name="initializing_audio">ऑडियो सिस्टम शुरू हो रहा है...</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">सेटिंग्स</string>
+    <string name="personal_info_menu">👤 व्यक्तिगत जानकारी</string>
+    <string name="language_voice_menu">🌐 भाषा और वॉयस सेटिंग्स</string>
+    <string name="notifications_menu">🔔 नोटिफिकेशन सेटिंग्स</string>
+    <string name="weather_menu">☁️ मौसम</string>
+    <string name="privacy_security_menu">🛡️ गोपनीयता और सुरक्षा</string>
+
+    <!-- Notification Settings -->
+    <string name="notif_settings_title">नोटिफिकेशन सेटिंग्स</string>
+    <string name="manage_notifications">नोटिफिकेशन प्रबंधित करें</string>
+    <string name="manage_notifications_desc">चुनें कि आप कौन से नोटिफिकेशन प्राप्त करना चाहते हैं</string>
+    <string name="weather_alerts">मौसम अलर्ट</string>
+    <string name="weather_alerts_desc">भीषण मौसम की स्थिति के लिए अलर्ट प्राप्त करें</string>
+    <string name="daily_farming_tips">दैनिक खेती के टिप्स</string>
+    <string name="daily_farming_tips_desc">हर दिन व्यक्तिगत खेती के टिप्स प्राप्त करें</string>
+    <string name="notif_preferences">नोटिफिकेशन प्राथमिकताएं</string>
+    <string name="enable_sound">ध्वनि सक्षम करें</string>
+    <string name="enable_vibration">कंपन सक्षम करें</string>
+    <string name="dnd_mode">परेशान न करें (रात 9 बजे - सुबह 7 बजे)</string>
+    <string name="save_settings">सेटिंग्स सहेजें</string>
+    <string name="notif_note">नोट: आपकी सुरक्षा और फसल सुरक्षा सुनिश्चित करने के लिए आपकी सेटिंग्स की परवाह किए बिना महत्वपूर्ण मौसम अलर्ट हमेशा वितरित किए जाएंगे।</string>
+
+    <!-- Privacy & Security -->
+    <string name="privacy_security_title">गोपनीयता और सुरक्षा</string>
+    <string name="privacy_matters">आपकी गोपनीयता मायने रखती है</string>
+    <string name="privacy_matters_desc">नियंत्रित करें कि ऐप आपके डेटा और डिवाइस सुविधाओं का उपयोग कैसे करता है</string>
+    <string name="app_permissions">ऐप अनुमतियां</string>
+    <string name="location_access">स्थान पहुंच</string>
+    <string name="location_access_desc">मौसम अपडेट के लिए</string>
+    <string name="camera_access">कैमरा पहुंच</string>
+    <string name="camera_access_desc">रोग की पहचान और छवि अपलोड के लिए</string>
+    <string name="mic_access">माइक्रोफ़ोन पहुंच</string>
+    <string name="mic_access_desc">वॉयस क्वेरी और कमांड के लिए</string>
+    <string name="notifications_access">नोटिफिकेशन</string>
+    <string name="notifications_access_desc">मौसम अलर्ट और अपडेट के लिए</string>
+    <string name="logout">लॉग आउट</string>
+    <string name="privacy_note">नोट: आपका डेटा सुरक्षित रूप से संग्रहीत है और आपकी स्पष्ट सहमति के बिना कभी भी तीसरे पक्ष के साथ साझा नहीं किया जाता है।</string>
+
+    <!-- Dialogs & Toasts -->
+    <string name="settings_preserved">सभी सेटिंग्स सुरक्षित हैं!</string>
+    <string name="logout_dialog_title">लॉग आउट</string>
+    <string name="logout_confirm_msg">क्या आप लॉग आउट करना चाहते हैं? कृपया पुष्टि करें।</string>
+    <string name="yes">हाँ</string>
+    <string name="no">नहीं</string>
+    <string name="logging_out">लॉग आउट हो रहा है...</string>
+    <string name="camera_denied">कैमरा अनुमति अस्वीकृत</string>
+    <string name="mic_denied">माइक्रोफ़ोन अनुमति अस्वीकृत</string>
+</resources>

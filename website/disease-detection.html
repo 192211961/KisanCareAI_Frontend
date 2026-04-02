@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Detection - KisanMitra</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .feature-header {
+            padding: 40px 16px 12px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #EEEEEE;
+        }
+        .info-box-purple {
+            background: #F3E5F5;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            margin-top: 12px;
+        }
+        .upload-area {
+            border: 2px dashed var(--light-grey);
+            border-radius: 20px;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 24px;
+            cursor: pointer;
+        }
+        .btn-upload-gallery {
+            background: #ECEFF1;
+            color: black;
+            border: none;
+            border-radius: 12px;
+            padding: 16px;
+            width: 100%;
+            margin-top: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .tips-box-yellow {
+            background: #FFFDE7;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 24px;
+            margin-bottom: 100px;
+        }
+        .tip-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 12px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="desktop-sidebar">
+            <div class="sidebar-logo">
+                <i data-lucide="sprout" size="32"></i>
+                <span>KisanMitra</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="home.html" class="sidebar-link"><i data-lucide="home"></i> Home</a>
+                <a href="disease-detection.html" class="sidebar-link active"><i data-lucide="camera"></i> Crop Scan</a>
+                <a href="weather.html" class="sidebar-link"><i data-lucide="cloud-sun"></i> Weather</a>
+                <a href="ask-question.html" class="sidebar-link"><i data-lucide="message-square"></i> Ask AI</a>
+                <a href="history.html" class="sidebar-link"><i data-lucide="history"></i> History</a>
+                <a href="settings.html" class="sidebar-link"><i data-lucide="settings"></i> Settings</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="sidebar-link" style="color: var(--soft-red);"><i data-lucide="log-out"></i> Logout</a>
+            </div>
+        </aside>
+
+        <div class="main-content-layout">
+            <header class="feature-header">
+            <a href="home.html" style="color: black;"><i data-lucide="arrow-left"></i></a>
+            <h2 style="margin-left: 16px; font-size: 18px; font-weight: bold;">Disease Detection</h2>
+        </header>
+
+        <main class="p-24">
+            <div class="info-box-purple">
+                <i data-lucide="camera" color="#9C27B0"></i>
+                <div style="margin-left: 16px;">
+                    <p style="font-weight: bold; font-size: 16px;">Upload or capture image</p>
+                    <p style="font-size: 14px; color: var(--grey); margin-top: 4px;">Take a clear photo of the affected plant part.</p>
+                </div>
+            </div>
+
+            <div class="upload-area" id="drop-zone">
+                <i data-lucide="image" size="48" color="var(--grey)"></i>
+                <p id="file-name" style="margin-top: 16px; color: var(--grey);">No image selected</p>
+                <input type="file" id="file-input" accept="image/*" style="display: none;">
+                <button class="btn-primary mt-16" id="capture-btn" style="display: flex; align-items: center; justify-content: center; gap: 12px;">
+                    <i data-lucide="camera" size="20"></i> Capture / Select Photo
+                </button>
+            </div>
+
+            <div id="error-msg" style="display:none; color:red; font-size:14px; margin-top:12px; text-align:center;"></div>
+
+            <div class="tips-box-yellow">
+                <p style="font-weight: bold; font-size: 15px;">Tips for best results:</p>
+                <div class="tip-item"><i data-lucide="check-circle" size="16" color="var(--vibrant-green)"></i> Ensure good lighting</div>
+                <div class="tip-item"><i data-lucide="check-circle" size="16" color="var(--vibrant-green)"></i> Focus on the affected area</div>
+                <div class="tip-item"><i data-lucide="check-circle" size="16" color="var(--vibrant-green)"></i> Avoid blurry images</div>
+            </div>
+        </main>
+        </div> <!-- End of main-content-layout -->
+    </div>
+    <script type="module">
+        import { history } from './js/api.js?v=2';
+        import CONFIG from './js/config.js?v=2';
+
+        lucide.createIcons();
+
+        const fileInput = document.getElementById('file-input');
+        const captureBtn = document.getElementById('capture-btn');
+        const fileName = document.getElementById('file-name');
+        const errorMsg = document.getElementById('error-msg');
+        const email = localStorage.getItem('user_email');
+        let keyIndex = 0;
+
+        captureBtn.addEventListener('click', () => fileInput.click());
+
+        fileInput.addEventListener('change', async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            fileName.textContent = file.name;
+            errorMsg.style.display = 'none';
+            captureBtn.disabled = true;
+            captureBtn.textContent = 'Analyzing image...';
+
+            try {
+                const base64Image = await fileToBase64(file);
+                const analysis = await analyzeImage(base64Image);
+
+                // Save to history
+                if (email) {
+                    try {
+                        await history.save({ email, query: 'Disease Scan: ' + file.name, response: analysis, is_disease: true });
+                    } catch (e) { console.warn('History save failed:', e); }
+                }
+
+                // Pass to response page
+                sessionStorage.setItem('ai_query', 'Scan for: ' + file.name);
+                sessionStorage.setItem('ai_response', analysis);
+                window.location.href = 'ai-response.html';
+            } catch (err) {
+                errorMsg.textContent = err.message;
+                errorMsg.style.display = 'block';
+                captureBtn.disabled = false;
+                captureBtn.textContent = 'Capture / Select Photo';
+            }
+        });
+
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result.split(',')[1]);
+                reader.onerror = error => reject(error);
+            });
+        }
+
+        async function analyzeImage(base64Data) {
+            const apiKeys = CONFIG.GEMINI_API_KEYS;
+            const prompt = `You are an expert plant pathologist. Analyze the attached image for crop diseases.
+                        
+STEP 1: Check for These THREE SPECIFIC CASES FIRST.
+IF the image matches one of these descriptions, you MUST return the corresponding EXACT TEXT and NOTHING ELSE.
+
+CASE 1: Image shows Cotton leaf with angular brown/black spots.
+EXACT TEXT TO RETURN:
+Crop: Cotton (Gossypium)
+Disease: Bacterial Blight of Cotton (also called Angular Leaf Spot)
+Symptoms: Small dark brown/black angular spots on leaves that later enlarge and cause yellowing and drying.
+Solution / Treatment: 
+- Remove and destroy infected leaves or plants.
+- Spray Copper oxychloride (0.3%) or Copper fungicide.
+- Use disease-resistant cotton varieties.
+- Avoid overhead irrigation and maintain proper field drainage.
+- Follow crop rotation and use certified disease-free seeds.
+
+CASE 2: Image shows Maize (Corn) leaf with reddish-brown rust pustules.
+EXACT TEXT TO RETURN:
+Crop: 🌽 Maize (Corn)
+Disease: 🦠 Common Rust of Maize
+Cause: Fungus – Puccinia sorghi
+Symptoms (seen in the image): Small reddish-brown or rust-colored pustules on the leaf, yellowish surrounding leaf tissue.
+Solution / Management:
+- Grow rust-resistant maize varieties.
+- Spray fungicides such as Mancozeb or Propiconazole.
+- Remove infected plant debris from the field.
+- Maintain proper field spacing to reduce humidity.
+
+CASE 3: Image shows Chili Pepper plant with aphids (small insects) or leaves curling/yellowing.
+EXACT TEXT TO RETURN:
+Crop: 🌶️ Chili Pepper
+Disease / Pest: 🐛 Aphids infestation
+Symptoms: Small insects clustered on leaves and stems, leaves curling and yellowing.
+Solution / Management:
+- Spray Neem oil (3–5 ml per liter of water)
+- Apply insecticides such as Imidacloprid or Thiamethoxam
+- Remove heavily infested leaves
+- Encourage natural predators like lady beetles. 🌱
+
+STEP 2: IF AND ONLY IF the image does NOT match any of the cases above, then provide an expert diagnosis in this format:
+Crop: [Name]
+Disease: [Name]
+Symptoms: [Brief description]
+Solution / Treatment: [Bullet points]`;
+
+            for (let attempt = 0; attempt < apiKeys.length; attempt++) {
+                const apiKey = apiKeys[(keyIndex + attempt) % apiKeys.length];
+                try {
+                    const res = await fetch(
+                        `https://generativelanguage.googleapis.com/v1/models/${CONFIG.GEMINI_MODEL}:generateContent?key=${apiKey}`,
+                        {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                contents: [{
+                                    parts: [
+                                        { text: prompt },
+                                        { inline_data: { mime_type: "image/jpeg", data: base64Data } }
+                                    ]
+                                }]
+                            })
+                        }
+                    );
+                    if (!res.ok) { keyIndex++; continue; }
+                    const data = await res.json();
+                    const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+                    if (text) { keyIndex += attempt; return text; }
+                } catch (e) { keyIndex++; }
+            }
+            throw new Error('All Gemini API keys failed. Please try again later.');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Preference - KisanMitra</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .lang-header {
+            padding: 40px 16px 12px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #EEEEEE;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .chip {
+            height: 60px;
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .chip.active {
+            background: var(--light-green);
+            border-color: var(--vibrant-green);
+            color: var(--vibrant-green);
+            font-weight: bold;
+        }
+        .voice-box {
+            height: 60px;
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            cursor: pointer;
+        }
+        .voice-box.active {
+            background: var(--light-green);
+            border-color: var(--vibrant-green);
+            color: var(--vibrant-green);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="desktop-sidebar">
+            <div class="sidebar-logo">
+                <i data-lucide="sprout" size="32"></i>
+                <span>KisanMitra</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="home.html" class="sidebar-link"><i data-lucide="home"></i> Home</a>
+                <a href="disease-detection.html" class="sidebar-link"><i data-lucide="camera"></i> Crop Scan</a>
+                <a href="weather.html" class="sidebar-link"><i data-lucide="cloud-sun"></i> Weather</a>
+                <a href="ask-question.html" class="sidebar-link"><i data-lucide="message-square"></i> Ask AI</a>
+                <a href="history.html" class="sidebar-link"><i data-lucide="history"></i> History</a>
+                <a href="settings.html" class="sidebar-link active"><i data-lucide="settings"></i> Settings</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="sidebar-link" style="color: var(--soft-red);"><i data-lucide="log-out"></i> Logout</a>
+            </div>
+        </aside>
+
+        <div class="main-content-layout">
+            <header class="lang-header">
+                <h2 style="font-size: 18px; font-weight: bold;">Language & Voice Preference</h2>
+            </header>
+
+        <main class="p-24" style="padding-bottom: 100px;">
+            <h1 style="font-size: 22px; font-weight: bold; margin-top: 12px;">Customize your experience</h1>
+            <p style="color: var(--grey); font-size: 16px; margin-top: 8px;">Choose the language for the app and AI responses</p>
+
+            <p style="color: var(--grey); font-size: 14px; margin-top: 32px;">Response Language</p>
+            <div class="grid">
+                <div class="chip active">English</div>
+                <div class="chip">हिंदी</div>
+                <div class="chip">తెలుగు</div>
+                <div class="chip">தமிழ்</div>
+            </div>
+
+            <p style="color: var(--grey); font-size: 14px; margin-top: 32px;">Voice Output</p>
+            <div style="display: flex; gap: 12px; margin-top: 12px;">
+                <div class="voice-box active">
+                    <i data-lucide="volume-2" size="20"></i>
+                    <span>Enabled</span>
+                </div>
+                <div class="voice-box">
+                    <i data-lucide="volume-x" size="20"></i>
+                    <span>Disabled</span>
+                </div>
+            </div>
+
+            <button class="btn-primary" style="margin-top: 48px;" onclick="window.location.href='settings.html'">Complete Setup</button>
+        </main>
+        </div> <!-- End of main-content-layout -->
+    </div>
+    <script>
+        lucide.createIcons();
+        document.querySelectorAll('.chip').forEach(el => {
+            el.addEventListener('click', () => {
+                document.querySelectorAll('.chip').forEach(s => s.classList.remove('active'));
+                el.classList.add('active');
+                
+                const lang = el.innerText === 'English' ? 'en' : 
+                             el.innerText === 'हिंदी' ? 'hi' : 
+                             el.innerText === 'తెలుగు' ? 'te' : 'ta';
+                localStorage.setItem('user_lang', lang);
+                console.log('Lang set to:', lang);
+            });
+        });
+
+        document.querySelectorAll('.voice-box').forEach(el => {
+            el.addEventListener('click', () => {
+                document.querySelectorAll('.voice-box').forEach(s => s.classList.remove('active'));
+                el.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

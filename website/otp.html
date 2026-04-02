@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify OTP - KisanMitra</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .header-otp {
+            padding: 40px 16px 12px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #EEEEEE;
+            background: white;
+        }
+        .instruction {
+            color: var(--grey);
+            font-size: 16px;
+            text-align: center;
+            margin: 40px 0 32px;
+        }
+        .otp-inputs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+        .otp-box {
+            width: 42px;
+            height: 56px;
+            border: 1.5px solid var(--light-grey);
+            border-radius: 12px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 800;
+            background: var(--white);
+            transition: border-color 0.2s;
+        }
+        .otp-box:focus {
+            outline: none;
+            border-color: var(--vibrant-green);
+        }
+        .resend-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .resend-link {
+            color: var(--vibrant-green);
+            text-decoration: none;
+            font-weight: 800;
+        }
+        .resend-link.disabled {
+            color: var(--grey);
+            font-weight: 400;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Desktop Visual Side -->
+        <div class="login-visual-side">
+            <div class="visual-content">
+                <i data-lucide="shield-check" size="100" stroke-width="1.5"></i>
+                <h1 class="visual-title">Verification</h1>
+                <p class="visual-subtitle">Protecting your account with secure OTP verification.</p>
+                <div class="visual-features">
+                    <div class="feature-item"><i data-lucide="lock"></i> End-to-End Encryption</div>
+                    <div class="feature-item"><i data-lucide="mail"></i> Email Verification</div>
+                    <div class="feature-item"><i data-lucide="user-check"></i> Identity Protection</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="register-gradient">
+            <header class="header-otp">
+                <h2 style="font-size: 18px; font-weight: 800;">Verify OTP</h2>
+            </header>
+
+            <main class="p-24" style="text-align: center;">
+                <div class="branding-icon mobile-only" style="margin-bottom: 32px; color: var(--vibrant-green);">
+                    <i data-lucide="sprout" size="64"></i>
+                </div>
+                <h1 style="font-size: 24px; font-weight: bold; margin-bottom: 8px;">Check your email</h1>
+                <p class="instruction" style="margin-top: 0;">Enter the 6-digit code sent to your Gmail</p>
+                
+                <div class="card-white" style="margin-top: 32px; padding: 40px 24px;">
+                    <div class="otp-inputs">
+                        <input type="text" maxlength="1" class="otp-box otp-input">
+                        <input type="text" maxlength="1" class="otp-box otp-input">
+                        <input type="text" maxlength="1" class="otp-box otp-input">
+                        <input type="text" maxlength="1" class="otp-box otp-input">
+                        <input type="text" maxlength="1" class="otp-box otp-input">
+                        <input type="text" maxlength="1" class="otp-box otp-input">
+                    </div>
+
+                    <div class="resend-container">
+                        <span id="resend-timer-text" style="color: var(--grey)">Resend OTP in 60s</span>
+                        <a href="#" id="resend-link" class="resend-link disabled" style="display: none;">Resend OTP</a>
+                    </div>
+
+                    <div id="error-message" style="display: none;"></div>
+                    <button class="btn-primary mt-32" id="verify-btn">Verify & Continue</button>
+                    
+                    <p style="margin-top: 32px; font-size: 14px; color: var(--grey);">
+                        Didn't receive code? <a href="#" style="color: var(--vibrant-green); font-weight: bold; text-decoration: none;">Contact Support</a>
+                    </p>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script type="module">
+        import { auth } from './js/api.js';
+
+        lucide.createIcons();
+
+        const verifyBtn = document.getElementById('verify-btn');
+        const resendLink = document.getElementById('resend-link');
+        const resendTimerText = document.getElementById('resend-timer-text');
+        const errorMsg = document.getElementById('error-message');
+        const inputs = document.querySelectorAll('.otp-input');
+        const email = localStorage.getItem('pending_email');
+
+        if (!email) {
+            window.location.href = 'register.html';
+        }
+
+        // Timer logic
+        let timeLeft = 60;
+        const startTimer = () => {
+            resendLink.style.display = 'none';
+            resendTimerText.style.display = 'inline';
+            timeLeft = 60;
+            const timer = setInterval(() => {
+                timeLeft--;
+                resendTimerText.textContent = `Resend OTP in ${timeLeft}s`;
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    resendTimerText.style.display = 'none';
+                    resendLink.style.display = 'inline';
+                    resendLink.className = 'resend-link';
+                }
+            }, 1000);
+        }
+        startTimer();
+
+        verifyBtn.addEventListener('click', async () => {
+            const otp = Array.from(inputs).map(i => i.value).join('');
+            
+            if (otp.length < 6) {
+                errorMsg.textContent = 'Please enter all 6 digits';
+                errorMsg.className = 'error-text';
+                errorMsg.style.display = 'block';
+                return;
+            }
+
+            try {
+                verifyBtn.disabled = true;
+                verifyBtn.innerHTML = '<span class="spinner"></span>Verifying...';
+                errorMsg.style.display = 'none';
+
+                await auth.verifyOtp(email, otp);
+                alert('Account verified! Please login.');
+                window.location.href = 'login.html';
+            } catch (error) {
+                errorMsg.textContent = error.message;
+                errorMsg.className = 'error-text';
+                errorMsg.style.display = 'block';
+            } finally {
+                verifyBtn.disabled = false;
+                verifyBtn.textContent = 'Verify & Continue';
+            }
+        });
+
+        resendLink.addEventListener('click', async (e) => {
+            e.preventDefault();
+            if (timeLeft > 0) return;
+            try {
+                resendLink.innerHTML = '<span class="spinner" style="border-top-color: var(--vibrant-green)"></span>Sending...';
+                await auth.resendOtp(email);
+                alert('New OTP sent to your email');
+                startTimer();
+            } catch (error) {
+                alert(error.message);
+                resendLink.textContent = 'Resend OTP';
+            }
+        });
+
+        // Auto focus flow
+        inputs.forEach((input, index) => {
+            input.addEventListener('input', () => {
+                if (input.value && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            });
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && !input.value && index > 0) {
+                    inputs[index - 1].focus();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

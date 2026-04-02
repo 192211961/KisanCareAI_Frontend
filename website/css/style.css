@@ -1,0 +1,392 @@
+:root {
+    /* KisanMitra Color Palette - Matched with Android colors.xml */
+    --vibrant-green: #00C853;
+    --deep-green: #00A544;
+    --light-green: #E8F5E9;
+    --light-grey: #E0E0E0;
+    --grey: #757575;
+    --black: #000000;
+    --white: #FFFFFF;
+    
+    /* Functional Colors */
+    --bg-light: #F8F9FA;
+    --nav-inactive: #757575;
+    --soft-blue: #2196F3;
+    --soft-yellow: #FBC02D;
+    --soft-red: #EF5350;
+    --soft-purple: #9C27B0;
+    --soft-cyan: #00BCD4;
+    --soft-orange: #FF9800;
+    
+    /* Typography */
+    --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: #F0F2F5; /* Slightly darker to make card-container pop */
+    color: var(--black);
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+/* Container for Desktop View (Full width on desktop) */
+.app-container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bg-light);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+    .app-container {
+        flex-direction: row; /* Sidebar on left */
+        background-color: #F8FAFC;
+    }
+
+    .main-content-layout {
+        flex: 1;
+        height: 100vh;
+        overflow-y: auto;
+        position: relative;
+        padding: 40px;
+    }
+
+    .bottom-nav {
+        display: none !important;
+    }
+
+    .desktop-sidebar {
+        display: flex !important;
+        width: 280px;
+        background: white;
+        border-right: 1px solid #E2E8F0;
+        flex-direction: column;
+        padding: 40px 24px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+}
+
+/* Sidebar hidden by default on mobile */
+.desktop-sidebar {
+    display: none;
+}
+
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 48px;
+    padding: 0 16px;
+}
+
+.sidebar-logo i {
+    color: var(--vibrant-green);
+}
+
+.sidebar-logo span {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.sidebar-nav {
+    list-style: none;
+    flex: 1;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 20px;
+    color: var(--grey);
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    transition: all 0.2s;
+}
+
+.sidebar-link:hover {
+    background-color: var(--light-green);
+    color: var(--deep-green);
+}
+
+.sidebar-link.active {
+    background-color: var(--vibrant-green);
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 200, 83, 0.2);
+}
+
+.sidebar-link i {
+    width: 24px;
+}
+
+/* Common Layouts */
+.p-24 { padding: 24px; }
+.mt-16 { margin-top: 16px; }
+.mt-32 { margin-top: 32px; }
+.mb-16 { margin-bottom: 16px; }
+.flex { display: flex; }
+.flex-column { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.text-center { text-align: center; }
+
+/* Android-style Cards */
+.card-white {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.02);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--vibrant-green), var(--deep-green));
+    color: var(--white);
+    border: none;
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    transition: transform 0.2s, opacity 0.2s;
+    box-shadow: 0 8px 16px rgba(0, 200, 83, 0.2);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+}
+
+.btn-primary:disabled {
+    background: var(--light-grey);
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+/* Input Fields - Matched with TextInputLayout */
+.input-wrapper {
+    position: relative;
+    margin-bottom: 16px;
+    width: 100%;
+}
+
+.input-field {
+    width: 100%;
+    padding: 16px 16px 16px 48px;
+    border: 1.5px solid var(--light-grey);
+    border-radius: 12px;
+    font-size: 16px;
+    background-color: var(--white);
+    transition: border-color 0.2s;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--vibrant-green);
+}
+
+.input-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--vibrant-green);
+}
+
+/* Header with Gradient - Android style */
+.header-gradient {
+    background: linear-gradient(135deg, var(--vibrant-green), var(--deep-green));
+    height: 280px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+/* Circle Backgrounds */
+.circle-bg {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg-white-circle { background-color: var(--white); }
+.bg-blue-circle { background-color: #E3F2FD; color: var(--soft-blue); }
+.bg-purple-circle { background-color: #F3E5F5; color: var(--soft-purple); }
+.bg-red-circle { background-color: #FFEBEE; color: var(--soft-red); }
+.bg-cyan-circle { background-color: #E0F7FA; color: var(--soft-cyan); }
+.bg-orange-circle { background-color: #FFF3E0; color: var(--soft-orange); }
+
+/* Bottom Navigation */
+.bottom-nav {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+    background: var(--white);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+    z-index: 100;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--nav-inactive);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.nav-item.active {
+    color: var(--vibrant-green);
+}
+
+.nav-item i {
+    font-size: 24px;
+    margin-bottom: 4px;
+}
+
+/* Spinner Animation */
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+#error-message, .error-text {
+    color: #d32f2f;
+    margin-top: 12px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Login Desktop Redesign */
+@media (min-width: 1024px) {
+    .login-visual-side {
+        display: flex !important;
+        flex: 1.2;
+        background: linear-gradient(135deg, var(--vibrant-green), var(--deep-green));
+        color: white;
+        padding: 60px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-gradient, .register-gradient {
+        flex: 1;
+        background: #FFFFFF !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .login-content {
+        width: 100%;
+        max-width: 480px;
+        padding: 40px;
+        align-items: flex-start !important;
+        background: white;
+    }
+
+    .form-card {
+        box-shadow: none !important;
+        padding: 0 !important;
+        background: none !important;
+    }
+
+    .mobile-only {
+        display: none !important;
+    }
+
+    .welcome-text, .sub-text {
+        text-align: left !important;
+        width: 100%;
+        margin-left: 0 !important;
+    }
+
+    .visual-content {
+        max-width: 500px;
+    }
+
+    .visual-title {
+        font-size: 48px;
+        font-weight: 900;
+        margin-top: 24px;
+        margin-bottom: 16px;
+    }
+
+    .visual-subtitle {
+        font-size: 18px;
+        opacity: 0.9;
+        margin-bottom: 40px;
+    }
+
+    .feature-item {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 20px;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .feature-item i {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 8px;
+        border-radius: 12px;
+    }
+}
+
+.login-visual-side {
+    display: none;
+}
+
+/* Scrollable Content */
+.scroll-content {
+    flex: 1;
+    overflow-y: auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Utility for icons */
+.lucide {
+    stroke-width: 2px;
+}

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - KisanMitra</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .home-header {
+            padding: 48px 24px 24px;
+            color: white;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+        }
+        .user-info {
+            margin-left: 16px;
+            flex: 1;
+        }
+        .welcome-back {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        .user-name {
+            font-size: 18px;
+            font-weight: 800;
+        }
+        .main-content {
+            padding: 16px 24px 100px;
+            position: relative;
+            z-index: 1;
+        }
+        .tip-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .tip-title {
+            display: flex;
+            align-items: center;
+            font-weight: 800;
+            color: #1A1C1E;
+        }
+        .tip-text {
+            color: #44474E;
+            font-size: 15px;
+            margin-bottom: 16px;
+        }
+        .chip {
+            background: #F4F7F6;
+            color: var(--deep-green);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 800;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: 800;
+            margin: 32px 0 16px;
+        }
+        .quick-actions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .action-card {
+            background: white;
+            border-radius: 24px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .action-card:active { transform: scale(0.95); }
+        .action-card i { margin-bottom: 12px; }
+        .action-card span { font-size: 14px; font-weight: 600; text-align: center; color: var(--black); }
+
+        .three-grid {
+            grid-template-columns: 1fr 1fr 1fr;
+            margin-top: 16px;
+        }
+        .three-grid .action-card { padding: 12px; }
+        .three-grid span { font-size: 12px; }
+
+        .list-item-card {
+            background: white;
+            border-radius: 20px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            margin-top: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            cursor: pointer;
+        }
+        .list-item-card i { margin-right: 16px; color: var(--vibrant-green); }
+        .list-item-card span { font-weight: 700; flex: 1; }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="desktop-sidebar">
+            <div class="sidebar-logo">
+                <i data-lucide="sprout" size="32"></i>
+                <span>KisanMitra</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="home.html" class="sidebar-link active"><i data-lucide="home"></i> Home</a>
+                <a href="disease-detection.html" class="sidebar-link"><i data-lucide="camera"></i> Crop Scan</a>
+                <a href="weather.html" class="sidebar-link"><i data-lucide="cloud-sun"></i> Weather</a>
+                <a href="ask-question.html" class="sidebar-link"><i data-lucide="message-square"></i> Ask AI</a>
+                <a href="history.html" class="sidebar-link"><i data-lucide="history"></i> History</a>
+                <a href="settings.html" class="sidebar-link"><i data-lucide="settings"></i> Settings</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="sidebar-link" style="color: var(--soft-red);"><i data-lucide="log-out"></i> Logout</a>
+            </div>
+        </aside>
+
+        <div class="main-content-layout">
+            <div class="header-gradient"></div>
+            
+            <header class="home-header">
+            <div class="circle-bg bg-white-circle" style="color: var(--vibrant-green)">
+                <i data-lucide="sprout" size="28"></i>
+            </div>
+            <div class="user-info">
+                <p class="welcome-back">Welcome Back,</p>
+                <p class="user-name" id="display-name">Demo Farmer</p>
+            </div>
+            <a href="notifications.html" style="color: white;"><i data-lucide="bell"></i></a>
+        </header>
+
+        <div class="scroll-content">
+            <main class="main-content">
+                <!-- Tip Card -->
+                <div class="card-white" style="margin-top: 0;">
+                    <div class="tip-card-header">
+                        <div class="tip-title">
+                            <i data-lucide="lightbulb" size="20" style="color: var(--soft-yellow); margin-right: 8px;"></i>
+                            Today's Tip
+                        </div>
+                        <span style="color: var(--grey); font-size: 12px;" id="current-date"></span>
+                    </div>
+                    <p class="tip-text">Monitor your crops for early signs of pest infestation to prevent widespread damage.</p>
+                    <div class="chip" onclick="window.location.href='personalized-tips.html'">View All Tips</div>
+                </div>
+
+                <!-- Live Weather Card -->
+                <div class="card-white" id="weather-card" style="margin-top: 16px; background: linear-gradient(135deg, #3B82F6, #1E40AF); color: white; display: none;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <p style="font-size: 12px; opacity: 0.8;">Live Weather</p>
+                            <h3 id="home-temp" style="font-size: 24px; font-weight: 800; margin: 4px 0;">--°C</h3>
+                            <p id="home-condition" style="font-size: 14px; opacity: 0.9;">Detecting...</p>
+                        </div>
+                        <i id="home-weather-icon" data-lucide="cloud-sun" size="40"></i>
+                    </div>
+                </div>
+
+                <h2 class="section-title" data-i18n="quick_actions">Quick Actions</h2>
+                <div class="quick-actions-grid">
+                    <div class="action-card" onclick="window.location.href='ask-question.html'">
+                        <div class="icon-circle" style="background-color: #E0F2FE;">
+                            <i data-lucide="message-square" style="color: #0284C7;"></i>
+                        </div>
+                        <h4 style="font-size: 14px; font-weight: bold; margin-bottom: 4px;" data-i18n="ask_question">Ask Questions</h4>
+                    </div>
+
+                    <div class="action-card" onclick="window.location.href='voice-query.html'">
+                        <div class="icon-circle" style="background-color: #DCFCE7;">
+                            <i data-lucide="mic" style="color: #16A34A;"></i>
+                        </div>
+                        <h4 style="font-size: 14px; font-weight: bold; margin-bottom: 4px;" data-i18n="voice_query">Voice Query</h4>
+                    </div>
+
+                    <div class="action-card" onclick="window.location.href='disease-detection.html'">
+                        <div class="icon-circle" style="background-color: #FEF3C7;">
+                            <i data-lucide="camera" style="color: #D97706;"></i>
+                        </div>
+                        <h4 style="font-size: 14px; font-weight: bold; margin-bottom: 4px;" data-i18n="crop_scan">Crop Scan</h4>
+                    </div>
+                    <div class="action-card" onclick="window.location.href='weather.html'">
+                        <div class="circle-bg bg-cyan-circle"><i data-lucide="cloud-sun"></i></div>
+                        <span data-i18n="weather">Weather</span>
+                    </div>
+                    <div class="action-card" onclick="window.location.href='feedback.html'">
+                        <div class="circle-bg bg-orange-circle"><i data-lucide="star"></i></div>
+                        <span data-i18n="feedback">Feedback</span>
+                    </div>
+                    <div class="action-card" onclick="window.location.href='settings.html'">
+                        <div class="circle-bg" style="background-color:#F1F5F9;"><i data-lucide="settings" style="color:#64748B;"></i></div>
+                        <span data-i18n="settings">Settings</span>
+                    </div>
+                </div>
+
+                <h2 class="section-title">Recent Activity</h2>
+                <div class="list-item-card" onclick="window.location.href='history.html'">
+                    <i data-lucide="history"></i>
+                    <span>Query History</span>
+                    <i data-lucide="chevron-right" style="color: var(--grey)"></i>
+                </div>
+                <div class="list-item-card" onclick="window.location.href='saved-advice.html'">
+                    <i data-lucide="bookmark"></i>
+                    <span>Saved Advice</span>
+                    <i data-lucide="chevron-right" style="color: var(--grey)"></i>
+                </div>
+            </main>
+        </div>
+
+        <nav class="bottom-nav">
+            <a href="home.html" class="nav-item active">
+                <i data-lucide="sprout"></i>
+                <span data-i18n="home">Home</span>
+            </a>
+            <a href="history.html" class="nav-item">
+                <i data-lucide="history"></i>
+                <span data-i18n="history">History</span>
+            </a>
+            <a href="help.html" class="nav-item">
+                <i data-lucide="help-circle"></i>
+                <span data-i18n="help">Help</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i data-lucide="settings"></i>
+                <span data-i18n="settings">Settings</span>
+            </a>
+        </nav>
+        </div> <!-- End of main-content-layout -->
+    </div>
+
+    <script type="module">
+        import CONFIG from './js/config.js?v=2.5';
+        import { applyTranslations } from './js/i18n.js?v=2.5';
+
+        lucide.createIcons();
+        applyTranslations();
+
+        const name = localStorage.getItem('user_name') || 'Farmer';
+        const welcomeEl = document.getElementById('display-name');
+        if (welcomeEl) welcomeEl.textContent = name;
+
+        const dateStr = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+        document.getElementById('current-date').textContent = dateStr;
+
+        // Weather on Home
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(async (pos) => {
+                try {
+                    const lat = pos.coords.latitude;
+                    const lon = pos.coords.longitude;
+                    
+                    // Get city name (Prioritize specific locations like village/hamlet)
+                    const geoRes = await fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`);
+                    const geoData = await geoRes.json();
+                    const addr = geoData.address;
+                    const city = addr.village || addr.hamlet || addr.suburb || addr.town || addr.city || addr.state || "India";
+
+                    const url = `${CONFIG.WEATHER_BASE_URL}/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&timezone=auto`;
+                    const res = await fetch(url);
+                    const data = await res.json();
+                    
+                    document.getElementById('weather-card').style.display = 'block';
+                    document.getElementById('home-temp').textContent = `${Math.round(data.current.temperature_2m)}°C`;
+                    
+                    const code = data.current.weather_code;
+                    let condition = "Clear Sky";
+                    if (code >= 61) condition = "Rainy";
+                    else if (code >= 1) condition = "Cloudy";
+                    
+                    document.getElementById('home-condition').textContent = `${condition} | ${city}`;
+                } catch (e) { console.error(e); }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query History - KisanMitra</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .history-header {
+            padding: 40px 16px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #EEEEEE;
+        }
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 100px;
+            color: #94A3B8;
+            text-align: center;
+        }
+        .history-item {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="desktop-sidebar">
+            <div class="sidebar-logo">
+                <i data-lucide="sprout" size="32"></i>
+                <span>KisanMitra</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="home.html" class="sidebar-link"><i data-lucide="home"></i> Home</a>
+                <a href="disease-detection.html" class="sidebar-link"><i data-lucide="camera"></i> Crop Scan</a>
+                <a href="weather.html" class="sidebar-link"><i data-lucide="cloud-sun"></i> Weather</a>
+                <a href="ask-question.html" class="sidebar-link"><i data-lucide="message-square"></i> Ask AI</a>
+                <a href="history.html" class="sidebar-link active"><i data-lucide="history"></i> History</a>
+                <a href="settings.html" class="sidebar-link"><i data-lucide="settings"></i> Settings</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="sidebar-link" style="color: var(--soft-red);"><i data-lucide="log-out"></i> Logout</a>
+            </div>
+        </aside>
+
+        <div class="main-content-layout">
+            <header class="history-header">
+                <div style="display: flex; align-items: center;">
+                    <a href="home.html" style="color: black;"><i data-lucide="arrow-left"></i></a>
+                    <h2 style="margin-left: 16px; font-size: 18px; font-weight: bold;">Query History</h2>
+                </div>
+                <span id="clear-all-btn" style="color: #DC2626; font-size: 14px; font-weight: bold; cursor: pointer;">Clear All</span>
+            </header>
+
+        <main class="p-24" style="padding-bottom: 100px;">
+            <!-- Dummy Items if not empty -->
+            <div class="history-item">
+                <p style="font-weight: bold; font-size: 14px;">How to treat leaf blight?</p>
+                <p style="color: var(--grey); font-size: 12px; margin-top: 4px;">Oct 24, 2023 • 2:30 PM</p>
+            </div>
+            <div class="history-item">
+                <p style="font-weight: bold; font-size: 14px;">Best fertilizer for cotton crop?</p>
+                <p style="color: var(--grey); font-size: 12px; margin-top: 4px;">Oct 22, 2023 • 10:15 AM</p>
+            </div>
+
+            <div class="empty-state" style="display: none;">
+                <i data-lucide="message-square" size="80"></i>
+                <h3 style="color: #64748B; margin-top: 20px; font-size: 18px; font-weight: bold;">No query history yet</h3>
+                <p style="margin-top: 8px;">Your past queries will appear here</p>
+            </div>
+        </main>
+        </div> <!-- End of main-content-layout -->
+    </div>
+    <script type="module">
+        import { history } from './js/api.js';
+
+        lucide.createIcons();
+
+        const email = localStorage.getItem('user_email');
+        const historyContainer = document.querySelector('main');
+        const emptyState = document.querySelector('.empty-state');
+        const clearBtn = document.querySelector('.history-header span');
+
+        async function loadHistory() {
+            try {
+                const items = await history.get(email);
+                document.querySelectorAll('.history-item').forEach(el => el.remove());
+
+                if (!items || items.length === 0) {
+                    emptyState.style.display = 'flex';
+                } else {
+                    emptyState.style.display = 'none';
+                    items.reverse().forEach((item, idx) => {
+                        const date = new Date(item.timestamp).toLocaleString();
+                        const div = document.createElement('div');
+                        div.className = 'history-item';
+                        div.style.position = 'relative';
+                        div.innerHTML = `
+                            <button class="history-del-btn" data-id="${item.id}" style="position:absolute; top:12px; right:12px; background:none; border:none; color:#FF4444; cursor:pointer;">
+                                <i data-lucide="trash-2" size="18"></i>
+                            </button>
+                            <p style="font-weight: bold; font-size: 14px; padding-right:30px;">${item.query}</p>
+                            <p style="color: var(--grey); font-size: 12px; margin-top: 4px;">${date}</p>
+                        `;
+                        historyContainer.appendChild(div);
+                    });
+
+                    document.querySelectorAll('.history-del-btn').forEach(btn => {
+                        btn.addEventListener('click', async (e) => {
+                            e.stopPropagation();
+                            if (!confirm('Delete this item?')) return;
+                            try {
+                                await history.deleteItem(btn.dataset.id);
+                                loadHistory();
+                            } catch (err) { btn.closest('.history-item').remove(); }
+                        });
+                    });
+                    lucide.createIcons();
+                }
+            } catch (error) {
+                console.error('Error loading history:', error);
+            }
+        }
+
+        clearBtn.addEventListener('click', async () => {
+            if (!confirm('Are you sure you want to clear all history?')) return;
+            try {
+                await history.clear(email);
+                loadHistory();
+            } catch (error) {
+                alert('Error clearing history: ' + error.message);
+            }
+        });
+
+        if (email) loadHistory();
+        else window.location.href = 'login.html';
+    </script>
+</body>
+</html>

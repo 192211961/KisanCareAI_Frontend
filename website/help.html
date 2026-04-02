@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & FAQ - KisanMitra</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .help-header {
+            padding: 40px 16px 12px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #EEEEEE;
+        }
+        .info-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .faq-item {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            cursor: pointer;
+        }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        .faq-answer {
+            margin-top: 8px;
+            color: var(--grey);
+            font-size: 14px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="desktop-sidebar">
+            <div class="sidebar-logo">
+                <i data-lucide="sprout" size="32"></i>
+                <span>KisanMitra</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="home.html" class="sidebar-link"><i data-lucide="home"></i> Home</a>
+                <a href="disease-detection.html" class="sidebar-link"><i data-lucide="camera"></i> Crop Scan</a>
+                <a href="weather.html" class="sidebar-link"><i data-lucide="cloud-sun"></i> Weather</a>
+                <a href="ask-question.html" class="sidebar-link"><i data-lucide="message-square"></i> Ask AI</a>
+                <a href="history.html" class="sidebar-link"><i data-lucide="history"></i> History</a>
+                <a href="settings.html" class="sidebar-link"><i data-lucide="settings"></i> Settings</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="sidebar-link" style="color: var(--soft-red);"><i data-lucide="log-out"></i> Logout</a>
+            </div>
+        </aside>
+
+        <div class="main-content-layout">
+            <header class="help-header">
+                <a href="home.html" style="color: black;"><i data-lucide="arrow-left"></i></a>
+                <h2 style="margin-left: 16px; font-size: 18px; font-weight: bold; flex: 1; text-align: center; margin-right: 40px;">Help & FAQ</h2>
+            </header>
+
+        <main class="p-24" style="padding-bottom: 100px;">
+            <div class="info-card">
+                <h3 style="color: var(--vibrant-green); font-size: 18px; font-weight: bold;">About KisanMitra</h3>
+                <p style="margin-top: 12px; font-size: 14px; line-height: 1.5;">
+                    KisanMitra is your AI farming companion. We help you:<br>
+                    • Detect crop diseases via photos<br>
+                    • Get AI farming advice<br>
+                    • Track local weather forecasts<br>
+                    • Access personalized farming tips
+                </p>
+            </div>
+
+            <h3 style="margin-top: 24px; font-size: 16px; font-weight: bold;">Contact us</h3>
+            <div class="info-card" style="margin-top: 12px;">
+                <p style="color: var(--grey); font-size: 14px;">Feel free to reach out to us</p>
+                <div class="contact-item">
+                    <i data-lucide="mail" color="var(--vibrant-green)" size="20"></i>
+                    <span style="font-size: 14px;">kisanmitraquery@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i data-lucide="message-circle" color="var(--vibrant-green)" size="20"></i>
+                    <span style="font-size: 14px;">+91 8919561059</span>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 24px; font-size: 16px; font-weight: bold;">Frequently Asked Questions</h3>
+            <div style="margin-top: 12px;">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How accurate is disease detection?</span>
+                        <i data-lucide="chevron-right" size="20" color="var(--grey)"></i>
+                    </div>
+                    <p class="faq-answer">Our AI is trained on thousands of samples and is over 90% accurate. However, always verify with experts.</p>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I use the app offline?</span>
+                        <i data-lucide="chevron-right" size="20" color="var(--grey)"></i>
+                    </div>
+                    <p class="faq-answer">Some features like Saved Advice are available offline, but AI Query and Weather need internet.</p>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is my data secure?</span>
+                        <i data-lucide="chevron-right" size="20" color="var(--grey)"></i>
+                    </div>
+                    <p class="faq-answer">Yes, we prioritize your privacy and never share your data without consent.</p>
+                </div>
+            </div>
+        </main>
+
+        <nav class="bottom-nav">
+            <a href="home.html" class="nav-item">
+                <i data-lucide="home"></i>
+                <span>Home</span>
+            </a>
+            <a href="help.html" class="nav-item active">
+                <i data-lucide="help-circle"></i>
+                <span>Help</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i data-lucide="settings"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+        </div> <!-- End of main-content-layout -->
+    </div>
+    <script>
+        lucide.createIcons();
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.querySelector('.faq-answer');
+                const icon = item.querySelector('i[data-lucide="chevron-right"], i[data-lucide="chevron-down"]');
+                const isVisible = answer.style.display === 'block';
+                answer.style.display = isVisible ? 'none' : 'block';
+                // Toggle icon (conceptual, since data-lucide is static here)
+            });
+        });
+    </script>
+</body>
+</html>

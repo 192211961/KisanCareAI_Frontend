@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Response - KisanMitra</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .ai-header {
+            padding: 40px 16px 12px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #EEEEEE;
+        }
+        .query-box {
+            background: #E0F2FE;
+            padding: 16px;
+            border-radius: 12px;
+        }
+        .response-text {
+            color: #374151;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-top: 24px;
+        }
+        .action-btns {
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+        }
+        .action-btn {
+            flex: 1;
+            height: 54px;
+            border: 2px solid var(--vibrant-green);
+            background: white;
+            color: var(--vibrant-green);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .action-btn:hover { background: #E8F5E9; }
+        .feedback-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 24px;
+        }
+        .feedback-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .ask-another {
+            width: 100%;
+            height: 60px;
+            background: white;
+            border: 2px solid var(--vibrant-green);
+            border-radius: 12px;
+            margin-top: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--vibrant-green);
+            font-size: 16px;
+        }
+        .note-brown {
+            background: #FFF7ED;
+            padding: 16px;
+            border-radius: 12px;
+            margin-top: 32px;
+            margin-bottom: 24px;
+            font-size: 13px;
+            color: #7C2D12;
+            line-height: 1.5;
+        }
+        #loading-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 80px;
+            text-align: center;
+        }
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid #E2E8F0;
+            border-top-color: var(--vibrant-green);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="desktop-sidebar">
+            <div class="sidebar-logo">
+                <i data-lucide="sprout" size="32"></i>
+                <span>KisanMitra</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="home.html" class="sidebar-link"><i data-lucide="home"></i> Home</a>
+                <a href="disease-detection.html" class="sidebar-link"><i data-lucide="camera"></i> Crop Scan</a>
+                <a href="weather.html" class="sidebar-link"><i data-lucide="cloud-sun"></i> Weather</a>
+                <a href="ask-question.html" class="sidebar-link"><i data-lucide="message-square"></i> Ask AI</a>
+                <a href="history.html" class="sidebar-link"><i data-lucide="history"></i> History</a>
+                <a href="settings.html" class="sidebar-link"><i data-lucide="settings"></i> Settings</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="sidebar-link" style="color: var(--soft-red);"><i data-lucide="log-out"></i> Logout</a>
+            </div>
+        </aside>
+
+        <div class="main-content-layout">
+            <header class="ai-header">
+                <a href="home.html" style="color: black;"><i data-lucide="arrow-left"></i></a>
+                <h2 style="margin-left: 16px; font-size: 18px; font-weight: bold;">AI Response</h2>
+            </header>
+
+        <main class="p-24" style="padding-bottom: 100px;">
+            <!-- Loading state -->
+            <div id="loading-indicator">
+                <div class="spinner"></div>
+                <p style="margin-top: 20px; color: var(--grey);">Generating AI response...</p>
+            </div>
+
+            <!-- Response content (hidden until loaded) -->
+            <div id="response-content" style="display:none;">
+                <div class="query-box">
+                    <p style="color: var(--grey); font-size: 14px;">Your Question</p>
+                    <p id="query-display" style="font-weight: bold; font-size: 16px; margin-top: 4px;"></p>
+                </div>
+
+                <div id="ai-response-text" class="response-text"></div>
+
+                <div class="action-btns">
+                    <button class="action-btn" id="play-btn">
+                        <i data-lucide="volume-2"></i>
+                        <span id="play-label">Play Audio</span>
+                    </button>
+                    <button class="action-btn" id="save-btn">
+                        <i data-lucide="bookmark"></i>
+                        <span>Save</span>
+                    </button>
+                </div>
+
+                <div class="feedback-row">
+                    <span style="font-size: 14px;">Was this helpful?</span>
+                    <div style="display: flex; gap: 8px;">
+                        <div class="feedback-icon" id="thumbs-up"><i data-lucide="thumbs-up" size="18"></i></div>
+                        <div class="feedback-icon" id="thumbs-down"><i data-lucide="thumbs-down" size="18"></i></div>
+                    </div>
+                </div>
+
+                <button class="ask-another" onclick="window.location.href='ask-question.html'">Ask Another Question</button>
+                <button class="btn-primary" style="margin-top: 12px;" onclick="window.location.href='home.html'">Back to Home</button>
+
+                <div class="note-brown">
+                    ⚠️ AI can make mistakes. Please verify important information with local agricultural extension services before taking field actions.
+                </div>
+            </div>
+        </main>
+        </div> <!-- End of main-content-layout -->
+    </div>
+    <script type="module">
+        import CONFIG from './js/config.js?v=2.1';
+        lucide.createIcons();
+        
+        // Add version footer
+        const footerNote = document.createElement('div');
+        footerNote.style.cssText = 'font-size:10px; color:#ccc; text-align:center; padding:10px;';
+        footerNote.textContent = `AI Engine: ${CONFIG.VERSION} | Model: ${CONFIG.GEMINI_MODEL}`;
+        document.querySelector('.main-content-layout').appendChild(footerNote);
+
+        const query = sessionStorage.getItem('ai_query');
+        const response = sessionStorage.getItem('ai_response');
+
+        const loading = document.getElementById('loading-indicator');
+        const content = document.getElementById('response-content');
+        const queryDisplay = document.getElementById('query-display');
+        const responseText = document.getElementById('ai-response-text');
+
+        if (query && response) {
+            loading.style.display = 'none';
+            content.style.display = 'block';
+            queryDisplay.textContent = query;
+            
+            // Check if it's an error message
+            if (response.includes("Unable to get response") || response.includes("exhausted")) {
+                responseText.innerHTML = `<div style="color:red; background:#FFF1F1; padding:20px; border-radius:12px; margin-top:20px;">
+                    <strong>AI Error:</strong><br>${response}<br><br>
+                    <p style="font-size:14px; color:black">Please refresh the page (Ctrl+F5) and try again.</p>
+                </div>`;
+            } else {
+                // Render markdown-style bold/italic
+                responseText.innerHTML = response
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                    .replace(/\n/g, '<br>');
+            }
+        } else {
+            loading.innerHTML = '<p style="color:var(--grey); margin-bottom:20px;">No response found. Please ask a question first.</p><a href="ask-question.html" class="btn-primary" style="margin-top:20px;">Ask a Question</a>';
+        }
+
+        // Play Audio via Web Speech API
+        const playBtn = document.getElementById('play-btn');
+        const playLabel = document.getElementById('play-label');
+        let speaking = false;
+
+        // Warm up voices
+        speechSynthesis.getVoices();
+        window.speechSynthesis.onvoiceschanged = () => { speechSynthesis.getVoices(); };
+
+        if (playBtn) {
+            playBtn.addEventListener('click', () => {
+                if (speaking) {
+                    speechSynthesis.cancel();
+                    speaking = false;
+                    playLabel.textContent = 'Play Audio';
+                    return;
+                }
+                
+                // Strip HTML tags and markdown symbols for clean speech
+                let cleanText = response ? response.replace(/<[^>]*>/g, '') : '';
+                cleanText = cleanText.replace(/[#*]/g, ''); // Remove symbols like # and *
+                
+                const utterance = new SpeechSynthesisUtterance(cleanText);
+                
+                // Detailed Language Detection
+                let detectedLang = 'en-IN';
+                if (/[\u0C00-\u0C7F]/.test(cleanText)) { detectedLang = 'te-IN'; } // Telugu
+                else if (/[\u0900-\u097F]/.test(cleanText)) { detectedLang = 'hi-IN'; } // Hindi
+                else if (/[\u0B80-\u0BFF]/.test(cleanText)) { detectedLang = 'ta-IN'; } // Tamil
+                else if (/[\u0C80-\u0CFF]/.test(cleanText)) { detectedLang = 'kn-IN'; } // Kannada
+                else if (/[\u0D00-\u0D7F]/.test(cleanText)) { detectedLang = 'ml-IN'; } // Malayalam
+                
+                utterance.lang = detectedLang;
+
+                // Robust voice selection
+                const voices = window.speechSynthesis.getVoices();
+                if (voices.length > 0) {
+                    const langBase = detectedLang.split('-')[0];
+                    // Search strategy: 1. Exact lang match, 2. Name contains Telugu/LanguageName, 3. Lang starts with code
+                    let matchedVoice = voices.find(v => v.lang === detectedLang);
+                    
+                    if (!matchedVoice && detectedLang.startsWith('te')) {
+                        matchedVoice = voices.find(v => v.name.toLowerCase().includes('telugu') || v.name.includes('తెలుగు'));
+                    }
+                    
+                    if (!matchedVoice) {
+                        matchedVoice = voices.find(v => v.lang.startsWith(langBase));
+                    }
+                    
+                    if (matchedVoice) {
+                        console.log('Using voice:', matchedVoice.name);
+                        utterance.voice = matchedVoice;
+                        // Some voices need custom rate/pitch for better clarity
+                        if (matchedVoice.name.includes('Natural')) {
+                            utterance.rate = 1.0;
+                        }
+                    } else {
+                        console.warn('No native voice found for:', detectedLang);
+                    }
+                }
+
+                utterance.onend = () => { speaking = false; playLabel.textContent = 'Play Audio'; };
+                utterance.onerror = (e) => { 
+                    console.error('Speech error:', e); 
+                    alert('Audio playback failed. Please check if Telugu voice is enabled in your browser settings.');
+                    speaking = false; 
+                    playLabel.textContent = 'Play Audio'; 
+                };
+                
+                speechSynthesis.speak(utterance);
+                speaking = true;
+                playLabel.textContent = 'Stop Audio';
+            });
+        }
+
+        // Save button feedback
+        const saveBtn = document.getElementById('save-btn');
+        if (saveBtn) {
+            saveBtn.addEventListener('click', () => {
+                const q = sessionStorage.getItem('ai_query');
+                const r = sessionStorage.getItem('ai_response');
+
+                if (!q || !r) {
+                    alert('Nothing to save. Please ask a prompt first.');
+                    return;
+                }
+
+                const saved = JSON.parse(localStorage.getItem('saved_responses') || '[]');
+                
+                // Avoid duplicates
+                if (saved.some(s => s.query === q)) {
+                    alert('This advice is already in your saved list!');
+                    saveBtn.querySelector('span').textContent = 'Saved';
+                    return;
+                }
+
+                saved.push({ query: q, response: r, date: new Date().toISOString() });
+                localStorage.setItem('saved_responses', JSON.stringify(saved));
+                
+                // Success UI
+                saveBtn.style.background = '#00C853';
+                saveBtn.style.color = 'white';
+                saveBtn.querySelector('span').textContent = 'Saved!';
+                alert('Success: This advice has been added to your Saved Advice list.');
+            });
+        }
+
+        // Thumbs up/down feedback
+        const thumbsUp = document.getElementById('thumbs-up');
+        const thumbsDown = document.getElementById('thumbs-down');
+        if (thumbsUp) {
+            thumbsUp.addEventListener('click', () => {
+                thumbsUp.style.background = '#DCFCE7';
+                if (thumbsDown) thumbsDown.style.background = 'white';
+            });
+        }
+        if (thumbsDown) {
+            thumbsDown.addEventListener('click', () => {
+                thumbsDown.style.background = '#FEE2E2';
+                if (thumbsUp) thumbsUp.style.background = 'white';
+            });
+        }
+    </script>
+</body>
+</html>

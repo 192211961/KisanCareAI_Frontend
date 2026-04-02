@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saved Advice - KisanMitra</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .saved-header {
+            padding: 40px 16px 12px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #EEEEEE;
+        }
+        .info-blue-box {
+            background: #E0F2FE;
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .export-btn {
+            background: #2563EB;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+        }
+        .yellow-note {
+            background: #FEF9C3;
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 32px;
+            color: #854D0E;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .saved-item {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        @media print {
+            .desktop-sidebar, .bottom-nav, .export-btn, .saved-header a, .yellow-note {
+                display: none !important;
+            }
+            body { background: white; }
+            .main-content-layout { margin: 0; padding: 0; width: 100%; }
+            .app-container { display: block; }
+            .p-24 { padding: 0; }
+            .saved-item { 
+                box-shadow: none; 
+                border: 1px solid #eee;
+                break-inside: avoid;
+            }
+            .info-blue-box { background: #f0f9ff !important; border: 1px solid #bae6fd; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="desktop-sidebar">
+            <div class="sidebar-logo">
+                <i data-lucide="sprout" size="32"></i>
+                <span>KisanMitra</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="home.html" class="sidebar-link"><i data-lucide="home"></i> Home</a>
+                <a href="disease-detection.html" class="sidebar-link"><i data-lucide="camera"></i> Crop Scan</a>
+                <a href="weather.html" class="sidebar-link"><i data-lucide="cloud-sun"></i> Weather</a>
+                <a href="ask-question.html" class="sidebar-link"><i data-lucide="message-square"></i> Ask AI</a>
+                <a href="history.html" class="sidebar-link"><i data-lucide="history"></i> History</a>
+                <a href="settings.html" class="sidebar-link"><i data-lucide="settings"></i> Settings</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="sidebar-link" style="color: var(--soft-red);"><i data-lucide="log-out"></i> Logout</a>
+            </div>
+        </aside>
+
+        <div class="main-content-layout">
+            <header class="saved-header">
+                <a href="home.html" style="color: black;"><i data-lucide="arrow-left"></i></a>
+                <h2 style="margin-left: 16px; font-size: 18px; font-weight: bold;">Saved Advice</h2>
+            </header>
+
+        <main class="p-24" style="padding-bottom: 100px;">
+            <div class="info-blue-box">
+                <div>
+                    <p style="font-weight: bold; font-size: 16px;">Saved Recommendations</p>
+                    <p id="item-count" style="color: var(--grey); font-size: 14px; margin-top: 4px;">0 items saved</p>
+                </div>
+                <button class="export-btn">
+                    <i data-lucide="upload" size="18"></i>
+                    <span>Export</span>
+                </button>
+            </div>
+
+            <div id="saved-container">
+                <!-- Dynamic Content Loads Here -->
+            </div>
+
+            <div class="yellow-note">
+                Offline Access: Saved advice is stored locally on your device and can be accessed without internet connection.
+            </div>
+        </main>
+        </div> <!-- End of main-content-layout -->
+    </div>
+    <div id="no-saved" style="display:none; text-align:center; padding: 40px;">
+        <i data-lucide="bookmark" size="48" style="color:#ccc; margin-bottom:16px;"></i>
+        <p style="color:#888;">No saved advice yet.</p>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        const savedContainer = document.getElementById('saved-container');
+        const itemCount = document.getElementById('item-count');
+        const noSaved = document.getElementById('no-saved');
+
+        const exportBtn = document.querySelector('.export-btn');
+        if (exportBtn) {
+            exportBtn.addEventListener('click', () => {
+                const saved = JSON.parse(localStorage.getItem('saved_responses') || '[]');
+                if (saved.length === 0) {
+                    alert('No advice to export!');
+                    return;
+                }
+                window.print();
+            });
+        }
+
+        function loadSaved() {
+            const saved = JSON.parse(localStorage.getItem('saved_responses') || '[]');
+            itemCount.textContent = `${saved.length} items saved`;
+            
+            if (saved.length === 0) {
+                noSaved.style.display = 'block';
+                return;
+            }
+
+            savedContainer.innerHTML = '';
+            saved.reverse().forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'saved-item';
+                div.style.position = 'relative';
+                div.innerHTML = `
+                    <button onclick="deleteAdvice(${index})" style="position:absolute; top:12px; right:12px; background:none; border:none; color:#FF4444; cursor:pointer; padding:4px;">
+                        <i data-lucide="trash-2" size="18"></i>
+                    </button>
+                    <h3 style="font-size: 16px; font-weight: bold; padding-right:30px;">${item.query}</h3>
+                    <p style="color: var(--grey); font-size: 13px; margin-top: 8px;">Saved on ${new Date(item.date).toLocaleDateString()}</p>
+                    <div style="margin-top:12px; font-size:14px; color:#444; max-height: 80px; overflow: hidden;">
+                        ${item.response.substring(0, 150)}...
+                    </div>
+                    <button onclick="viewAdvice(${index})" class="chip" style="margin-top:12px; background:var(--light-green); color:var(--deep-green); border:none;">View Full Advice</button>
+                `;
+                savedContainer.appendChild(div);
+            });
+            lucide.createIcons();
+        }
+
+        window.deleteAdvice = (index) => {
+            if (confirm('Are you sure you want to delete this saved advice?')) {
+                const saved = JSON.parse(localStorage.getItem('saved_responses') || '[]').reverse();
+                saved.splice(index, 1);
+                localStorage.setItem('saved_responses', JSON.stringify(saved.reverse()));
+                loadSaved();
+            }
+        };
+
+        window.viewAdvice = (index) => {
+            const saved = JSON.parse(localStorage.getItem('saved_responses') || '[]').reverse();
+            const item = saved[index];
+            sessionStorage.setItem('ai_query', item.query);
+            sessionStorage.setItem('ai_response', item.response);
+            window.location.href = 'ai-response.html';
+        };
+
+        loadSaved();
+    </script>
+</body>
+</html>

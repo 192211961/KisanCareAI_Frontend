@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - KisanMitra</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .feedback-header {
+            padding: 40px 16px 12px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #EEEEEE;
+        }
+        .blue-info {
+            background: #E0F2FE;
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            margin-top: 12px;
+        }
+        .stars-container {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+        .star {
+            cursor: pointer;
+            color: #E2E8F0;
+        }
+        .star.active {
+            color: #FACC15;
+            fill: #FACC15;
+        }
+        .feedback-textarea {
+            width: 100%;
+            height: 140px;
+            padding: 16px;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            margin-top: 12px;
+            font-size: 15px;
+            resize: none;
+        }
+        .aspect-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .aspect-chip {
+            height: 64px;
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .aspect-chip.active {
+            background: var(--light-green);
+            border-color: var(--vibrant-green);
+            color: var(--vibrant-green);
+            font-weight: bold;
+        }
+        .submit-btn-disabled {
+            background: #D1D5DB;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="desktop-sidebar">
+            <div class="sidebar-logo">
+                <i data-lucide="sprout" size="32"></i>
+                <span>KisanMitra</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="home.html" class="sidebar-link"><i data-lucide="home"></i> Home</a>
+                <a href="disease-detection.html" class="sidebar-link"><i data-lucide="camera"></i> Crop Scan</a>
+                <a href="weather.html" class="sidebar-link"><i data-lucide="cloud-sun"></i> Weather</a>
+                <a href="ask-question.html" class="sidebar-link"><i data-lucide="message-square"></i> Ask AI</a>
+                <a href="history.html" class="sidebar-link"><i data-lucide="history"></i> History</a>
+                <a href="settings.html" class="sidebar-link active"><i data-lucide="settings"></i> Settings</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="sidebar-link" style="color: var(--soft-red);"><i data-lucide="log-out"></i> Logout</a>
+            </div>
+        </aside>
+
+        <div class="main-content-layout">
+            <header class="feedback-header">
+                <a href="home.html" style="color: black;"><i data-lucide="arrow-left"></i></a>
+                <h2 style="margin-left: 16px; font-size: 18px; font-weight: bold;">Rate Experience</h2>
+            </header>
+
+        <main class="p-24" style="padding-bottom: 100px; text-align: center;">
+            <div class="blue-info" style="text-align: left;">
+                <i data-lucide="message-square" color="var(--vibrant-green)" size="20"></i>
+                <div style="margin-left: 12px;">
+                    <p style="font-weight: bold; font-size: 16px;">Share your feedback</p>
+                    <p style="font-size: 14px; color: var(--grey); margin-top: 4px;">Your feedback helps us improve the experience for all farmers.</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 32px; font-size: 18px; font-weight: bold;">How would you rate your experience?</h3>
+            <p style="margin-top: 8px; color: var(--grey); font-size: 14px;">Tap a star to rate</p>
+
+            <div class="stars-container">
+                <i data-lucide="star" class="star" size="52"></i>
+                <i data-lucide="star" class="star" size="52"></i>
+                <i data-lucide="star" class="star" size="52"></i>
+                <i data-lucide="star" class="star" size="52"></i>
+                <i data-lucide="star" class="star" size="52"></i>
+            </div>
+
+            <p style="margin-top: 32px; font-size: 15px;">Tell us more (optional)</p>
+            <textarea class="feedback-textarea" placeholder="What did you like or what can we improve?"></textarea>
+
+            <p style="margin-top: 32px; font-size: 15px;">What aspects would you rate most highly?</p>
+            <div class="aspect-grid">
+                <div class="aspect-chip">AI Accuracy</div>
+                <div class="aspect-chip">App Usability</div>
+                <div class="aspect-chip">Response Speed</div>
+                <div class="aspect-chip">Overall Experience</div>
+            </div>
+
+            <button class="btn-primary submit-btn-disabled" style="margin-top: 40px;" onclick="window.location.href='feedback-success.html'">Submit Feedback</button>
+            <a href="home.html" style="display: block; margin-top: 24px; color: var(--grey); font-size: 16px; text-decoration: none;">Skip for now</a>
+        </main>
+        </div> <!-- End of main-content-layout -->
+    </div>
+    <script>
+        lucide.createIcons();
+        document.querySelectorAll('.star').forEach((star, index) => {
+            star.addEventListener('click', () => {
+                const stars = document.querySelectorAll('.star');
+                stars.forEach((s, i) => {
+                    if (i <= index) s.classList.add('active');
+                    else s.classList.remove('active');
+                });
+                document.querySelector('button').classList.remove('submit-btn-disabled');
+            });
+        });
+        document.querySelectorAll('.aspect-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                chip.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - KisanMitra</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .register-gradient {
+            background: linear-gradient(180deg, var(--light-green), var(--white));
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .register-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 24px;
+            padding-bottom: 40px;
+        }
+        .branding-icon {
+            margin-top: 16px;
+            color: var(--vibrant-green);
+        }
+        .welcome-text {
+            font-size: 28px;
+            font-weight: 800;
+            margin-top: 16px;
+        }
+        .sub-text {
+            color: var(--grey);
+            font-size: 16px;
+            margin-top: 8px;
+            text-align: center;
+        }
+        .form-card {
+            margin-top: 32px;
+            width: 100%;
+        }
+        .login-link {
+            margin-top: 32px;
+            font-size: 16px;
+            color: var(--grey);
+        }
+        .login-link a {
+            color: var(--vibrant-green);
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Desktop Visual Side -->
+        <div class="login-visual-side">
+            <div class="visual-content">
+                <i data-lucide="sprout" size="100" stroke-width="1.5"></i>
+                <h1 class="visual-title">Join Us</h1>
+                <p class="visual-subtitle">Become a part of India's growing digital farming community.</p>
+                <div class="visual-features">
+                    <div class="feature-item"><i data-lucide="user-plus"></i> Simple Registration</div>
+                    <div class="feature-item"><i data-lucide="shield-check"></i> Secure Data</div>
+                    <div class="feature-item"><i data-lucide="zap"></i> Instant AI Responses</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="register-gradient">
+            <header class="p-24">
+                <a href="login.html" style="color: black;"><i data-lucide="arrow-left"></i></a>
+            </header>
+
+            <main class="register-content">
+                <div class="branding-icon mobile-only">
+                    <i data-lucide="sprout" size="80" stroke-width="2"></i>
+                </div>
+                <h1 class="welcome-text">Join Kisan Mitra</h1>
+                <p class="sub-text">Empowering farmers with AI</p>
+
+                <div class="card-white form-card">
+                    <h2 style="font-size: 20px; font-weight: bold; margin-bottom: 24px;">Create Account</h2>
+                    
+                    <div class="input-wrapper">
+                        <i data-lucide="user" class="input-icon"></i>
+                        <input type="text" id="full-name" class="input-field" placeholder="Full Name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
+                    </div>
+                    
+                    <div class="input-wrapper">
+                        <i data-lucide="mail" class="input-icon"></i>
+                        <input type="email" id="email" class="input-field" placeholder="Email Address">
+                    </div>
+                    
+                    <div class="input-wrapper">
+                        <i data-lucide="key" class="input-icon"></i>
+                        <input type="password" id="password" class="input-field" placeholder="Password">
+                    </div>
+                    
+                    <div class="input-wrapper">
+                        <i data-lucide="lock" class="input-icon"></i>
+                        <input type="password" id="confirm-password" class="input-field" placeholder="Confirm Password">
+                    </div>
+                    
+                    <div id="error-message" style="display: none;"></div>
+                    <button class="btn-primary mt-32" id="register-btn">Sign Up Now</button>
+                    
+                    <p class="login-link">
+                        Already have an account? <a href="login.html">Login</a>
+                    </p>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script type="module">
+        import { auth } from './js/api.js';
+
+        lucide.createIcons();
+
+        const registerBtn = document.getElementById('register-btn');
+        const nameInput = document.getElementById('full-name');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirm-password');
+        const errorMsg = document.getElementById('error-message');
+
+        registerBtn.addEventListener('click', async () => {
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+            const password = passwordInput.value.trim();
+            const confirmPassword = confirmPasswordInput.value.trim();
+
+            if (!name || !email || !password || !confirmPassword) {
+                errorMsg.textContent = 'Please fill in all fields';
+                errorMsg.className = 'error-text';
+                errorMsg.style.display = 'block';
+                return;
+            }
+
+            if (name.length < 3) {
+                errorMsg.textContent = 'Full Name must be at least 3 characters';
+                errorMsg.className = 'error-text';
+                errorMsg.style.display = 'block';
+                return;
+            }
+
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
+            if (!passwordRegex.test(password)) {
+                errorMsg.textContent = 'Password must be at least 8 characters, include one uppercase, one lowercase, one number, and one special symbol (@$!%*?&)';
+                errorMsg.className = 'error-text';
+                errorMsg.style.display = 'block';
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                errorMsg.textContent = 'Passwords do not match';
+                errorMsg.className = 'error-text';
+                errorMsg.style.display = 'block';
+                return;
+            }
+
+            try {
+                registerBtn.disabled = true;
+                registerBtn.innerHTML = '<span class="spinner"></span>Creating Account...';
+                errorMsg.style.display = 'none';
+
+                await auth.register(name, email, password);
+                
+                // Save context for OTP screen
+                localStorage.setItem('pending_email', email);
+                window.location.href = 'otp.html';
+            } catch (error) {
+                errorMsg.textContent = error.message;
+                errorMsg.className = 'error-text';
+                errorMsg.style.display = 'block';
+            } finally {
+                registerBtn.disabled = false;
+                registerBtn.textContent = 'Sign Up Now';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Settings - KisanMitra</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .notif-header {
+            padding: 40px 16px 12px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #EEEEEE;
+        }
+        .blue-card {
+            background: #E3F2FD;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            margin-top: 12px;
+        }
+        .settings-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 16px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 48px;
+            height: 24px;
+        }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: var(--light-grey);
+            transition: .4s;
+            border-radius: 24px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px; width: 18px;
+            left: 3px; bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider { background-color: var(--vibrant-green); }
+        input:checked + .slider:before { transform: translateX(24px); }
+        
+        .preferences-box {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 24px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            margin-top: 16px;
+            font-size: 14px;
+        }
+        .checkbox-item input {
+            margin-right: 12px;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--vibrant-green);
+        }
+        .note-box {
+            background: #F5F5F5;
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 24px;
+            margin-bottom: 24px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="desktop-sidebar">
+            <div class="sidebar-logo">
+                <i data-lucide="sprout" size="32"></i>
+                <span>KisanMitra</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="home.html" class="sidebar-link"><i data-lucide="home"></i> Home</a>
+                <a href="disease-detection.html" class="sidebar-link"><i data-lucide="camera"></i> Crop Scan</a>
+                <a href="weather.html" class="sidebar-link"><i data-lucide="cloud-sun"></i> Weather</a>
+                <a href="ask-question.html" class="sidebar-link"><i data-lucide="message-square"></i> Ask AI</a>
+                <a href="history.html" class="sidebar-link"><i data-lucide="history"></i> History</a>
+                <a href="settings.html" class="sidebar-link active"><i data-lucide="settings"></i> Settings</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="sidebar-link" style="color: var(--soft-red);"><i data-lucide="log-out"></i> Logout</a>
+            </div>
+        </aside>
+
+        <div class="main-content-layout">
+            <header class="notif-header">
+                <a href="settings.html" style="color: black;"><i data-lucide="arrow-left"></i></a>
+                <h2 style="margin-left: 16px; font-size: 18px; font-weight: bold;">Notification Settings</h2>
+            </header>
+
+        <main class="p-24" style="padding-bottom: 100px;">
+            <div class="blue-card">
+                <i data-lucide="bell" color="#2196F3"></i>
+                <div style="margin-left: 16px;">
+                    <p style="font-weight: bold; font-size: 16px;">Manage Notifications</p>
+                    <p style="font-size: 14px; color: var(--grey); margin-top: 4px;">Customize what you want to hear</p>
+                </div>
+            </div>
+
+            <div class="settings-card">
+                <div style="display: flex; align-items: center;">
+                    <i data-lucide="cloud-sun" color="#2196F3"></i>
+                    <div style="margin-left: 16px;">
+                        <p style="font-weight: bold;">Weather Alerts</p>
+                        <p style="font-size: 12px; color: var(--grey);">Get notified about weather changes</p>
+                    </div>
+                </div>
+                <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+            </div>
+
+            <div class="settings-card">
+                <div style="display: flex; align-items: center;">
+                    <i data-lucide="lightbulb" color="#FBC02D"></i>
+                    <div style="margin-left: 16px;">
+                        <p style="font-weight: bold;">Daily Farming Tips</p>
+                        <p style="font-size: 12px; color: var(--grey);">Stay updated with farming advice</p>
+                    </div>
+                </div>
+                <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+            </div>
+
+            <div class="preferences-box">
+                <p style="font-weight: bold;">Notification Preferences</p>
+                <label class="checkbox-item"><input type="checkbox" checked> Enable Sound</label>
+                <label class="checkbox-item"><input type="checkbox" checked> Enable Vibration</label>
+                <label class="checkbox-item"><input type="checkbox"> Do Not Disturb Mode</label>
+            </div>
+
+            <button class="btn-primary" style="margin-top: 32px;">Save Settings</button>
+
+            <div class="note-box">
+                Important notifications like emergency weather alerts will always be sent regardless of these settings.
+            </div>
+        </main>
+        </div> <!-- End of main-content-layout -->
+    </div>
+    <script>
+        lucide.createIcons();
+        document.querySelector('.btn-primary').addEventListener('click', () => {
+            alert('Notification settings saved successfully!');
+            window.location.href = 'settings.html';
+        });
+    </script>
+</body>
+</html>

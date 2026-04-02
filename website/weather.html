@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast - KisanMitra</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .weather-banner {
+            background: linear-gradient(135deg, #3B82F6, #1E40AF);
+            border-radius: 16px;
+            padding: 24px;
+            color: white;
+            margin-top: 16px;
+        }
+        .weather-detail-item {
+            text-align: center;
+            flex: 1;
+        }
+        .weather-detail-item p:first-child {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-bottom: 4px;
+        }
+        .weather-detail-item p:last-child {
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .forecast-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #F1F5F9;
+        }
+        .suggestion-box {
+            background-color: #F0FDF4;
+            border: 1px solid #DCFCE7;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 24px;
+            margin-bottom: 100px;
+            color: #166534;
+        }
+        .suggestion-item {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="desktop-sidebar">
+            <div class="sidebar-logo">
+                <i data-lucide="sprout" size="32"></i>
+                <span>KisanMitra</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="home.html" class="sidebar-link"><i data-lucide="home"></i> Home</a>
+                <a href="disease-detection.html" class="sidebar-link"><i data-lucide="camera"></i> Crop Scan</a>
+                <a href="weather.html" class="sidebar-link active"><i data-lucide="cloud-sun"></i> Weather</a>
+                <a href="ask-question.html" class="sidebar-link"><i data-lucide="message-square"></i> Ask AI</a>
+                <a href="history.html" class="sidebar-link"><i data-lucide="history"></i> History</a>
+                <a href="settings.html" class="sidebar-link"><i data-lucide="settings"></i> Settings</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="sidebar-link" style="color: var(--soft-red);"><i data-lucide="log-out"></i> Logout</a>
+            </div>
+        </aside>
+
+        <div class="main-content-layout">
+            <header class="p-24" style="padding-top: 40px; display: flex; align-items: center; border-bottom: 1px solid #EEEEEE;">
+                <a href="home.html" style="color: black;"><i data-lucide="arrow-left"></i></a>
+                <h2 style="margin-left: 16px; font-size: 18px; font-weight: bold;">Weather Forecast</h2>
+            </header>
+
+        <main class="p-24">
+            <div class="flex items-center mb-16" style="color: #64748B;">
+                <i data-lucide="map-pin" size="18"></i>
+                <span id="location-text" style="margin-left: 8px; font-size: 14px;">Your Farm Location</span>
+            </div>
+
+            <div class="weather-banner">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p style="font-size: 16px; opacity: 0.9;">Today</p>
+                        <h1 id="current-temp" style="font-size: 56px; font-weight: bold; margin: 4px 0;">--°C</h1>
+                        <p id="current-condition" style="font-size: 18px; opacity: 0.9;">Loading...</p>
+                        <p id="feels-like" style="font-size: 14px; opacity: 0.8; margin-top: 4px;">--</p>
+                    </div>
+                    <i data-lucide="cloud-sun" size="72"></i>
+                </div>
+                
+                <hr style="margin: 20px 0; border: none; border-top: 1px solid rgba(255,255,255,0.2);">
+                
+                <div class="flex">
+                    <div class="weather-detail-item">
+                        <p>Humidity</p>
+                        <p id="humidity">--%</p>
+                    </div>
+                    <div class="weather-detail-item">
+                        <p>Wind</p>
+                        <p id="wind">-- km/h</p>
+                    </div>
+                    <div class="weather-detail-item">
+                        <p>Rainfall</p>
+                        <p id="rain">-- mm</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="mt-16 mb-16" style="font-size: 18px; font-weight: bold;">7-Day Forecast</h3>
+            <div id="forecast-container" class="card-white" style="padding: 0 20px;">
+                <div class="forecast-item">
+                    <span>Loading...</span>
+                </div>
+            </div>
+
+            <div class="suggestion-box">
+                <p style="font-weight: bold; font-size: 16px;">Farming Suggestions</p>
+                <div class="suggestion-item">
+                    <span>•</span>
+                    <p>Complete pesticide application before Wednesday's rain</p>
+                </div>
+                <div class="suggestion-item">
+                    <span>•</span>
+                    <p>Prepare drainage channels for expected rainfall</p>
+                </div>
+                <div class="suggestion-item">
+                    <span>•</span>
+                    <p>Plan harvesting activities for sunny days (Mon, Sat)</p>
+                </div>
+            </div>
+        </main>
+
+                <a href="home.html" class="nav-item">
+                    <i data-lucide="settings"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+        </div> <!-- End of main-content-layout -->
+    </div>
+
+    <script type="module">
+        import CONFIG from './js/config.js?v=2.1';
+        lucide.createIcons();
+
+        const locationText = document.getElementById('location-text');
+        const currentTemp = document.getElementById('current-temp');
+        const currentCondition = document.getElementById('current-condition');
+        const feelsLike = document.getElementById('feels-like');
+        const humidity = document.getElementById('humidity');
+        const wind = document.getElementById('wind');
+        const rain = document.getElementById('rain');
+        const forecastContainer = document.getElementById('forecast-container');
+
+        const weatherCodes = {
+            0: "Clear sky", 1: "Mainly clear", 2: "Partly cloudy", 3: "Overcast",
+            45: "Fog", 48: "Depositing rime fog", 51: "Light drizzle", 53: "Moderate drizzle",
+            55: "Dense drizzle", 61: "Slight rain", 63: "Moderate rain", 65: "Heavy rain",
+            71: "Slight snow", 73: "Moderate snow", 75: "Heavy snow", 77: "Snow grains",
+            80: "Slight rain showers", 81: "Moderate rain showers", 82: "Violent rain showers",
+            95: "Thunderstorm", 96: "Thunderstorm with slight hail", 99: "Thunderstorm with heavy hail"
+        };
+
+        async function fetchWeather(lat, lon) {
+            try {
+                // Reverse geocoding for precise location name
+                const geoRes = await fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`);
+                const geoData = await geoRes.json();
+                const addr = geoData.address;
+                
+                // Smart fallback for specific village match
+                let city = addr.village || addr.hamlet || addr.neighbourhood || addr.suburb || addr.town || addr.city || addr.state || "India";
+                
+                // If Palanjur is shown but Kuthambakkam is in the full address, switch to it
+                if (geoData.display_name.includes('Kuthambakkam')) {
+                    city = 'Kuthambakkam';
+                }
+                
+                locationText.textContent = city + ", Tamil Nadu";
+
+                // Weather data
+                const url = `${CONFIG.WEATHER_BASE_URL}/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto`;
+                const res = await fetch(url);
+                const data = await res.json();
+
+                const c = data.current;
+                currentTemp.textContent = `${Math.round(c.temperature_2m)}°C`;
+                currentCondition.textContent = weatherCodes[c.weather_code] || "Clear sky";
+                feelsLike.textContent = `Feels like ${Math.round(c.apparent_temperature)}°C`;
+                humidity.textContent = `${c.relative_humidity_2m}%`;
+                wind.textContent = `${c.wind_speed_10m} km/h`;
+                rain.textContent = `${c.precipitation} mm`;
+
+                // 7-day forecast
+                forecastContainer.innerHTML = '';
+                const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+                for (let i = 0; i < 4; i++) {
+                    const date = new Date(data.daily.time[i]);
+                    const dayName = i === 0 ? "Today" : days[date.getDay()];
+                    const code = data.daily.weather_code[i];
+                    const max = Math.round(data.daily.temperature_2m_max[i]);
+                    const min = Math.round(data.daily.temperature_2m_min[i]);
+                    
+                    let icon = 'sun';
+                    if (code >= 61) icon = 'cloud-rain';
+                    else if (code >= 1) icon = 'cloud-sun';
+
+                    const item = document.createElement('div');
+                    item.className = 'forecast-item';
+                    item.innerHTML = `
+                        <span>${dayName}</span>
+                        <i data-lucide="${icon}"></i>
+                        <span style="font-weight: bold;">${max}° / ${min}°</span>
+                    `;
+                    forecastContainer.appendChild(item);
+                }
+                lucide.createIcons();
+
+            } catch (err) {
+                console.error('Weather fetch error:', err);
+                locationText.textContent = "Error fetching weather data";
+            }
+        }
+
+        // Get high-accuracy location on load
+        if (navigator.geolocation) {
+            console.log("Requesting high accuracy location...");
+            locationText.textContent = "Detecting your exact farm location...";
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    console.log("Success: ", pos.coords);
+                    fetchWeather(pos.coords.latitude, pos.coords.longitude);
+                },
+                (err) => {
+                    console.error("GPS Error:", err);
+                    locationText.textContent = "Location access denied. Please enable GPS for real-time weather.";
+                    // Fallback to manual check or last known?
+                },
+                {
+                    enableHighAccuracy: true,
+                    timeout: 20000,
+                    maximumAge: 0
+                }
+            );
+        } else {
+            locationText.textContent = "Geolocation is not supported by your browser.";
+        }
+    </script>
+</body>
+</html>

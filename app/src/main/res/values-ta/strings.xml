@@ -1,0 +1,198 @@
+<resources>
+    <string name="app_name">KisanCare AI</string>
+    <string name="welcome_back">மீண்டும் வருக!</string>
+    <string name="quick_actions">விரைவான செயல்கள்</string>
+    <string name="ask_question">கேள்வி\nகேட்க</string>
+    <string name="voice_query">குரல்\nவினவல்</string>
+    <string name="disease_detection">நோய்\nகண்டறிதல்</string>
+    <string name="weather">வானிலை</string>
+    <string name="share_feedback">உங்கள்\nகருத்தைப் பகிரவும்</string>
+    <string name="recent_activity">சமீபத்திய செயல்பாடு</string>
+    <string name="query_history">வினவல் வரலாறு</string>
+    <string name="query_history_desc">கடந்த வினவல்கள் மற்றும் பதில்களைப் பார்க்கவும்</string>
+    <string name="saved_advice">சேமித்த ஆலோசனை</string>
+    <string name="saved_advice_desc">உங்கள் புக்மார்க் செய்யப்பட்ட பரிந்துரைகளை அணுகவும்</string>
+    <string name="home">முகப்பு</string>
+    <string name="help">உதவி</string>
+    <string name="settings">அமைப்புகள்</string>
+    <string name="todays_tip">இன்றைய குறிப்பு</string>
+    <string name="view_all_tips">அனைத்து குறிப்புகளையும் காண்க</string>
+    <string name="language_voice_preference">மொழி மற்றும் குரல் விருப்பம்</string>
+    <string name="customize_experience">உங்கள் அனுபவத்தைத் தனிப்பயனாக்குங்கள்</string>
+    <string name="choose_language_desc">உங்களுக்கு விருப்பமான மொழி மற்றும் குரல் அமைப்புகளைத் தேர்வு செய்யவும்</string>
+    <string name="response_language">பதில் மொழி</string>
+    <string name="voice_output">குரல் வெளியீடு</string>
+    <string name="enabled">செயல்படுத்தப்பட்டது</string>
+    <string name="disabled">முடக்கப்பட்டது</string>
+    <string name="complete_setup">அமைப்பை முடிக்கவும்</string>
+
+    <!-- Help & FAQ -->
+    <string name="help_faq_title">உதவி &amp; அடிக்கடி கேட்கப்படும் கேள்விகள்</string>
+    <string name="about_kisan_mitra">KisanCare AI பற்றி</string>
+    <string name="about_feature_1">• புகைப்படங்களிலிருந்து AI-மூலம் பயிர் நோய் கண்டறிதல்</string>
+    <string name="about_feature_2">• உங்கள் பகுதிக்கான நிகழ்நேர துல்லியமான வானிலை முன்னறிவிப்புகள்</string>
+    <string name="about_feature_3">• குரல் மற்றும் உரை மூலம் நிபுணத்துவ விவசாய ஆலோசனை</string>
+    <string name="about_feature_4">• சிறந்த அணுகல்தன்மைக்காக பல மொழி ஆதரவு</string>
+    <string name="contact_us">எங்களைத் தொடர்பு கொள்ளுங்கள்</string>
+    <string name="contact_reach_out">ஏதேனும் கேள்விகளுக்கு, எங்களை அணுகவும்:</string>
+    <string name="faq_title">அடிக்கடி கேட்கப்படும் கேள்விகள்</string>
+
+    <!-- FAQ Item 1 -->
+    <string name="faq_q1">பயன்பாட்டைப் பயன்படுத்தி பயிர் நோய்களை நான் எவ்வாறு கண்டறிவது?</string>
+    <string name="faq_a1">முகப்புத் திரைக்குச் சென்று \'பயிர் நோய் கண்டறிதல்\' என்பதைக் கிளிக் செய்யவும். உங்கள் கேமராவை பாதிக்கப்பட்ட பயிர் பகுதியின் பக்கம் காட்டி புகைப்படம் எடுக்கவும். எங்கள் AI அதைப் பகுப்பாய்வு செய்து நோயறிதலை வழங்கும்.</string>
+    
+    <!-- FAQ Item 2 -->
+    <string name="faq_q2">AI ஆலோசனை எவ்வளவு துல்லியமானது?</string>
+    <string name="faq_a2">எங்கள் AI விரிவான விவசாய தரவுத்தொகுப்புகளில் பயிற்சி பெற்றது. இது மிகவும் துல்லியமானது என்றாலும், முக்கியமான முடிவுகளுக்கு உள்ளூர் விவசாய நிபுணரை அணுகுமாறு பரிந்துரைக்கிறோம்.</string>
+    
+    <!-- FAQ Item 3 -->
+    <string name="faq_q3">பயன்பாட்டை எனது உள்ளூர் மொழியில் பயன்படுத்தலாமா?</string>
+    <string name="faq_a3">ஆம், KisanCare AI பல பிராந்திய மொழிகளை ஆதரிக்கிறது. \'அமைப்புகள்\' மெனுவிலிருந்து உங்கள் மொழி விருப்பத்தை மாற்றிக்கொள்ளலாம்.</string>
+    
+    <!-- FAQ Item 4 -->
+    <string name="faq_q4">வானிலை முன்னறிவிப்பு ஆஃப்லைனில் வேலை செய்யுமா?</string>
+    <string name="faq_a4">நிகழ்நேர வானிலை அறிவிப்புகளைப் பெற உங்களுக்கு இணைய இணைப்பு தேவை. இருப்பினும், நீங்கள் கடைசியாகப் பார்த்த முன்னறிவிப்பு ஆஃப்லைனில் பார்க்கக் கிடைக்கலாம்.</string>
+    
+    <!-- FAQ Item 5 -->
+    <string name="faq_q5">குரல் வினவலை (Voice Query) நான் எவ்வாறு பயன்படுத்துவது?</string>
+    <string name="faq_a5">முகப்புத் திரையில் உள்ள \'குரல் வினவல்\' பொத்தானைத் தட்டி உங்கள் கேள்வியைக் கேட்கவும். பயன்பாடு உங்கள் குரலை உரையாக மாற்றி AI பதிலை வழங்கும்.</string>
+    
+    <!-- FAQ Item 6 -->
+    <string name="faq_q6">எனது தனிப்பட்ட தரவு பாதுகாப்பானதா?</string>
+    <string name="faq_a6">ஆம், தரவு தனியுரிமையை நாங்கள் தீவிரமாக எடுத்துக்கொள்கிறோம். உங்கள் சுயவிவரம் மற்றும் கேள்வி வரலாறு பாதுகாப்பாகச் சேமிக்கப்பட்டு, உங்கள் அனுமதியின்றி மூன்றாம் தரப்பினருடன் பகிரப்படாது.</string>
+    
+    <!-- FAQ Item 7 -->
+    <string name="faq_q7">பயனுள்ள விவசாய ஆலோசனைகளை நான் எவ்வாறு சேமிப்பது?</string>
+    <string name="faq_a7">ஒரு கேள்விக்கு நீங்கள் பதிலைப் பெறும்போது, அதை \'சேமி\' ஐகானைத் தட்டி உங்கள் \'சேமிக்கப்பட்ட ஆலோசனை\' பிரிவில் சேர்த்துக்கொள்ளலாம்.</string>
+    
+    <!-- FAQ Item 8 -->
+    <string name="faq_q8">பயன்பாடு செயலிழந்தால் நான் என்ன செய்ய வேண்டும்?</string>
+    <string name="faq_a8">பயன்பாட்டின் சமீபத்திய பதிப்பைப் பயன்படுத்துகிறீர்கள் என்பதை உறுதிப்படுத்தவும். சிக்கல் நீடித்தால், மேலே வழங்கப்பட்ட மின்னஞ்சல் அல்லது தொலைபேசி மூலம் எங்கள் ஆதரவுக் குழுவைத் தொடர்பு கொள்ளலாம்.</string>
+
+    <!-- Personalized Tips -->
+    <string name="tips_title">தனிப்பயனாக்கப்பட்ட குறிப்புகள்</string>
+    <string name="tips_info_desc">உங்கள் பண்ணை இருப்பிடம், பயிர்கள் மற்றும் தற்போதைய பருவத்தின் அடிப்படையில் இந்த குறிப்புகள் தினமும் உருவாக்கப்படுகின்றன.</string>
+    <string name="tip_1_title">பருவமழைக்கு முந்தைய\nமண் தயாரிப்பு</string>
+    <string name="tip_1_desc">பருவமழை வருவதற்கு முன்பு உங்கள் மண்ணில் கரிம உரத்தைச் சேர்க்கவும். இது நீர் தேக்கத்தையும் ஊட்டச்சத்து கிடைப்பதையும் மேம்படுத்துகிறது।</string>
+    <string name="tip_2_title">பருத்திக்கான பூச்சி கட்டுப்பாடு</string>
+    <string name="tip_2_desc">காய்ப்புழு தாக்குதலைக் கண்காணியுங்கள். இனக்கவர்ச்சி பொறிகளைப் பயன்படுத்துங்கள் மற்றும் பூச்சிகள் பெருகுவதைத் தடுக்க வயல் சுகாதாரத்தைப் பேணுங்கள்.</string>
+    <string name="tip_3_title">நீர்ப்பாசன மேலாண்மை</string>
+    <string name="tip_3_desc">நீராவி இழப்பைக் குறைக்க அதிகாலை அல்லது மாலை வேளையில் பயிர்களுக்கு நீர் பாய்ச்சுங்கள். சிறந்த செயல்திறனுக்காக சொட்டு நீர் பாசனத்தைப் பயன்படுத்துங்கள்.</string>
+    <string name="tip_4_title">ஊட்டச்சத்து மேலாண்மை</string>
+    <string name="tip_4_desc">மண் பரிசோதனை முடிவுகளின் அடிப்படையில் உரங்களைப் பயன்படுத்துங்கள். அளவுக்கு அதிகமாக உரமிடுவது மண் ஆரோக்கியத்தைப் பாதிக்கும் மற்றும் பணவிரயத்தை ஏற்படுத்தும்.</string>
+    <string name="tip_5_title">வானிலை சார்ந்த அறுவடை</string>
+    <string name="tip_5_desc">அறுவடைக்கு முன் உள்ளூர் வானிலைச் சோதிக்கவும். பயிர் அழுகுவதைத் தவிர்க்க குறைந்தது 3 நாட்களுக்கு உலர்வான வானிலை இருப்பதை உறுதி செய்யவும்.</string>
+    <string name="tip_6_title">இயற்கை உரம்</string>
+    <string name="tip_6_desc">மண்ணை இயற்கையாக வளப்படுத்தவும் அதன் நீண்டகால வளத்தை மேம்படுத்தவும் வேப்பம் புண்ணாக்கு அல்லது மண்புழு உரத்தைப் பயன்படுத்துங்கள்.</string>
+    <string name="tip_7_title">பயிர் சுழற்சி</string>
+    <string name="tip_7_desc">பூச்சிகளின் சுழற்சியை உடைக்கவும் மண் சத்துக்களை மீட்டெடுக்கவும் பயிர் சுழற்சியைப் பின்பற்றுங்கள். ஒரே பயிரைத் தொடர்ந்து இரண்டு முறை நடவு செய்யாதீர்கள்.</string>
+    <string name="tip_8_title">ஒருங்கிணைந்த பூச்சி மேலாண்மை</string>
+    <string name="tip_8_desc">பாதுகாப்பான அறுவடைக்கு, ரசாயன பூச்சிக்கொல்லிகளைப் பயன்படுத்துவதற்கு முன்பு உயிரியல் கட்டுப்பாடுகள் மற்றும் இனக்கவர்ச்சிப் பொறிகளைப் பயன்படுத்துங்கள்.</string>
+    <string name="tip_9_title">அறுவடைக்குப் பிந்தைய சேமிப்பு</string>
+    <string name="tip_9_desc">தானியங்களைக் குளிர்ந்த, உலர்ந்த இடத்தில் சேமிக்கவும். அச்சு மற்றும் பூச்சித் தாக்குதல்களைத் தவிர்க்க ஈரப்பதம் 12% க்கும் குறைவாக இருப்பதை உறுதி செய்யவும்.</string>
+    <string name="tip_10_title">நீர் பாதுகாப்பு</string>
+    <string name="tip_10_desc">மண் ஈரப்பதத்தைத் தக்கவைக்க உங்கள் வயல்களில் மூடாக்கு (Mulching) இடுங்கள். இது நீர் பாய்ச்சும் தேவையைக் குறைத்து கோடையில் வேர்களைக் குளிர்ச்சியாக வைத்திருக்கும்.</string>
+    <string name="tips_update_info">குறிப்புகள் தினமும் காலை 6:00 மணிக்கு புதுப்பிக்கப்படும்</string>
+
+    <!-- Feedback -->
+    <string name="rate_experience">உங்கள் அனுபவத்தை மதிப்பிடவும்</string>
+    <string name="share_feedback_title">உங்கள் கருத்தைப் பகிரவும்</string>
+    <string name="feedback_help_desc">உங்கள் கருத்து எங்கள் AI பரிந்துரைகளையும் ஆப் அனுபவத்தையும் மேம்படுத்த உதவுகிறது</string>
+    <string name="how_rate_experience">உங்கள் அனுபவத்தை நீங்கள் எவ்வாறு மதிப்பிடுவீர்கள்?</string>
+    <string name="tap_star_rate">மதிப்பிட நட்சத்திரத்தைத் தட்டவும்</string>
+    <string name="tell_us_more">மேலும் எங்களிடம் கூறுங்கள் (விருப்பமானது)</string>
+    <string name="feedback_hint">உங்கள் எண்ணங்கள், பரிந்துரைகள் அல்லது சிக்கல்களைப் பகிரவும்</string>
+    <string name="aspect_rating_title">நீங்கள் எந்த அம்சத்தை மதிப்பிடுகிறீர்கள்?</string>
+    <string name="ai_accuracy">AI துல்லியம்</string>
+    <string name="app_usability">ஆப் பயன்பாட்டினை</string>
+    <string name="response_speed">பதில் வேகம்</string>
+    <string name="overall_experience">ஒட்டுமொத்த\nஅனுபவம்</string>
+    <string name="submit_feedback">கருத்தைச் சமர்ப்பிக்கவும்</string>
+    <string name="skip_for_now">இப்போதைக்குத் தவிர்க்கவும்</string>
+
+    <!-- Feedback Success -->
+    <string name="feedback">கருத்து</string>
+    <string name="thank_you">நன்றி!</string>
+    <string name="feedback_success_desc">உங்கள் கருத்து KisanCare AI ஐ மேம்படுத்த உதவுகிறது</string>
+    <!-- Location Suggestion -->
+    <string name="location_suggestion_title">இருப்பிட சேவை முடக்கப்பட்டுள்ளது</string>
+    <string name="location_suggestion_desc">துல்லியமான வானிலை மற்றும் விவசாய ஆலோசனைகளைப் பெற இருப்பிடத்தை இயக்கவும்.</string>
+    <string name="location_turn_on">இயக்கவும்</string>
+
+    <!-- Ask a Question -->
+    <string name="ask_a_question_title">கேள்வி கேட்கவும்</string>
+    <string name="ask_any_farming">எந்த விவசாய கேள்வியையும் கேளுங்கள்</string>
+    <string name="ai_personalized_advice">எங்கள் AI உங்கள் பண்ணை விவரங்கள் மற்றும் தற்போதைய நிலைகளின் அடிப்படையில் தனிப்பயனாக்கப்பட்ட ஆலோசனைகளை வழங்கும்.</string>
+    <string name="your_question">உங்கள் கேள்வி</string>
+    <string name="question_hint">உங்கள் விவசாய கேள்வியை இங்கே தட்டச்சு செய்யவும்...</string>
+    <string name="submit_query">வினவலைச் சமர்ப்பிக்கவும்</string>
+    <string name="suggested_questions">பரிந்துரைக்கப்பட்ட கேள்விகள்</string>
+    <string name="suggested_q1">பருத்தியில் அசுவினிகளை எவ்வாறு கட்டுப்படுத்துவது?</string>
+    <string name="suggested_q2">கோதுமை பயிருக்கு சிறந்த உரம் எது?</string>
+    <string name="suggested_q3">நெல் அறுவடை எப்போது செய்ய வேண்டும்?</string>
+    <string name="suggested_q4">இயற்கை பூச்சி கட்டுப்பாட்டு முறைகள்?</string>
+
+    <!-- AI Response -->
+    <string name="ai_response_title">AI பதில்</string>
+    <string name="your_question_label">உங்கள் கேள்வி:</string>
+    <string name="play_audio">ஆடியோவை இயக்கவும்</string>
+    <string name="save">சேமிக்கவும்</string>
+    <string name="was_this_helpful">இது பயனுள்ளதாக இருந்ததா?</string>
+    <string name="ask_another_question">💬 மற்றொரு கேள்வி கேட்கவும்</string>
+    <string name="back_to_home">முகப்புக்குத் திரும்பவும்</string>
+    <string name="ai_note">குறிப்பு: இந்தப் பரிந்துரைகள் பொதுவான விவசாய நடைமுறைகளின் அடிப்படையில் AI-ஆல் உருவாக்கப்பட்டவை. முக்கியமான முடிவுகளுக்கு, உள்ளூர் விவசாய நிபுணர்கள் அல்லது விரிவாக்க அதிகாரிகளை அணுகவும்.</string>
+    <string name="consulting_ai">KisanCare AI-ஐ ஆலோசிக்கிறது...</string>
+    <string name="analyzing_image">KisanCare AI மூலம் படத்தைப் பகுப்பாய்வு செய்கிறது...</string>
+    <string name="upload_photo_desc">விரிவான நோய் பகுப்பாய்விற்கு உங்கள் தாவரத்தின் தெளிவான புகைப்படத்தைப் பதிவேற்றவும்.</string>
+    <string name="advice_saved">ஆலோசனை புக்மார்க்ஸில் சேமிக்கப்பட்டது</string>
+    <string name="initializing_audio">ஆடியோ சிஸ்டம் தொடங்குகிறது...</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">அமைப்புகள்</string>
+    <string name="personal_info_menu">👤 தனிப்பட்ட தகவல்</string>
+    <string name="language_voice_menu">🌐 மொழி மற்றும் குரல் அமைப்புகள்</string>
+    <string name="notifications_menu">🔔 அறிவிப்பு அமைப்புகள்</string>
+    <string name="weather_menu">☁️ வானிலை</string>
+    <string name="privacy_security_menu">🛡️ தனியுரிமை மற்றும் பாதுகாப்பு</string>
+
+    <!-- Notification Settings -->
+    <string name="notif_settings_title">அறிவிப்பு அமைப்புகள்</string>
+    <string name="manage_notifications">அறிவிப்புகளை நிர்வகிக்கவும்</string>
+    <string name="manage_notifications_desc">எந்த அறிவிப்புகளைப் பெற விரும்புகிறீர்கள் என்பதைத் தேர்வு செய்யவும்</string>
+    <string name="weather_alerts">வானிலை எச்சரிக்கைகள்</string>
+    <string name="weather_alerts_desc">தீவிர வானிலை நிலைகளுக்கான எச்சரிக்கைகளைப் பெறுங்கள்</string>
+    <string name="daily_farming_tips">தினசரி விவசாய குறிப்புகள்</string>
+    <string name="daily_farming_tips_desc">ஒவ்வொரு நாளும் தனிப்பயனாக்கப்பட்ட விவசாய குறிப்புகளைப் பெறுங்கள்</string>
+    <string name="notif_preferences">அறிவிப்பு முன்னுரிமைகள்</string>
+    <string name="enable_sound">ஒலியை இயக்கவும்</string>
+    <string name="enable_vibration">அதிர்வை இயக்கவும்</string>
+    <string name="dnd_mode">தொந்தரவு செய்ய வேண்டாம் (இரவு 9 மணி - காலை 7 மணி)</string>
+    <string name="save_settings">அமைப்புகளைச் சேமிக்கவும்</string>
+    <string name="notif_note">குறிப்பு: உங்கள் பாதுகாப்பு மற்றும் பயிர் பாதுகாப்பை உறுதி செய்வதற்காக உங்கள் அமைப்புகளைப் பொருட்படுத்தாமல் முக்கியமான வானிலை எச்சரிக்கைகள் எப்போதும் வழங்கப்படும்.</string>
+
+    <!-- Privacy & Security -->
+    <string name="privacy_security_title">தனியுரிமை மற்றும் பாதுகாப்பு</string>
+    <string name="privacy_matters">உங்கள் தனியுரிமை முக்கியம்</string>
+    <string name="privacy_matters_desc">ஆப் உங்கள் தரவு மற்றும் சாதன அம்சங்களை எவ்வாறு பயன்படுத்துகிறது என்பதைக் கட்டுப்படுத்தவும்</string>
+    <string name="app_permissions">ஆப் அனுமதிகள்</string>
+    <string name="location_access">இருப்பிட அணுகல்</string>
+    <string name="location_access_desc">வானிலை அறிவிப்புகளுக்கு</string>
+    <string name="camera_access">கேமரா அணுகல்</string>
+    <string name="camera_access_desc">நோய் கண்டறிதல் மற்றும் படப் பதிவேற்றங்களுக்கு</string>
+    <string name="mic_access">மைக்ரோஃபோன் அணுகல்</string>
+    <string name="mic_access_desc">குரல் வினவல்கள் மற்றும் கட்டளைகளுக்கு</string>
+    <string name="notifications_access">அறிவிப்புகள்</string>
+    <string name="notifications_access_desc">வானிலை எச்சரிக்கைகள் மற்றும் புதுப்பிப்புகளுக்கு</string>
+    <string name="logout">வெளியேறு</string>
+    <string name="privacy_note">குறிப்பு: உங்கள் தரவு பாதுகாப்பாகச் சேமிக்கப்பட்டு, உங்கள் அனுமதியின்றி மூன்றாம் தரப்பினருடன் ஒருபோதும் பகிரப்படாது.</string>
+
+    <!-- Dialogs & Toasts -->
+    <string name="settings_preserved">அனைத்து அமைப்புகளும் சேமிக்கப்பட்டன!</string>
+    <string name="logout_dialog_title">வெளியேறு</string>
+    <string name="logout_confirm_msg">நீங்கள் வெளியேற விரும்புகிறீர்களா? தயவுசெய்து உறுதிப்படுத்தவும்.</string>
+    <string name="yes">ஆம்</string>
+    <string name="no">இல்லை</string>
+    <string name="logging_out">வெளியேறுகிறது...</string>
+    <string name="camera_denied">கேமரா அனுமதி மறுக்கப்பட்டது</string>
+    <string name="mic_denied">மைக்ரோஃபோன் அனுமதி மறுக்கப்பட்டது</string>
+</resources>

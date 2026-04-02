@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask a Question - KisanMitra</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .ask-header {
+            padding: 40px 16px 12px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #EEEEEE;
+        }
+        .sparkle-box {
+            background: #E0F2FE;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            margin-top: 12px;
+        }
+        .question-area {
+            width: 100%;
+            height: 180px;
+            padding: 16px;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            margin-top: 12px;
+            font-size: 16px;
+            resize: none;
+        }
+        .submit-btn {
+            background: var(--vibrant-green);
+            color: white;
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        .submit-btn:disabled {
+            background: #CFD8DC;
+            cursor: not-allowed;
+        }
+        .suggestion-chip {
+            background: #F8FAFC;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            cursor: pointer;
+            border: 1px solid #E2E8F0;
+            transition: background 0.2s;
+        }
+        .suggestion-chip:hover {
+            background: #E0F2FE;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="desktop-sidebar">
+            <div class="sidebar-logo">
+                <i data-lucide="sprout" size="32"></i>
+                <span>KisanMitra</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="home.html" class="sidebar-link"><i data-lucide="home"></i> Home</a>
+                <a href="disease-detection.html" class="sidebar-link"><i data-lucide="camera"></i> Crop Scan</a>
+                <a href="weather.html" class="sidebar-link"><i data-lucide="cloud-sun"></i> Weather</a>
+                <a href="ask-question.html" class="sidebar-link active"><i data-lucide="message-square"></i> Ask AI</a>
+                <a href="history.html" class="sidebar-link"><i data-lucide="history"></i> History</a>
+                <a href="settings.html" class="sidebar-link"><i data-lucide="settings"></i> Settings</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="sidebar-link" style="color: var(--soft-red);"><i data-lucide="log-out"></i> Logout</a>
+            </div>
+        </aside>
+
+        <div class="main-content-layout">
+            <header class="ask-header">
+                <a href="home.html" style="color: black;"><i data-lucide="arrow-left"></i></a>
+                <h2 style="margin-left: 16px; font-size: 18px; font-weight: bold;">Ask a Question</h2>
+            </header>
+
+        <main class="p-24" style="padding-bottom: 100px;">
+            <div class="sparkle-box">
+                <i data-lucide="sparkles" color="#0EA5E9"></i>
+                <div style="margin-left: 16px;">
+                    <p style="font-weight: bold; font-size: 16px;">Ask any farming question</p>
+                    <p style="font-size: 14px; color: var(--grey); margin-top: 4px;">AI-powered personalized advice</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 32px; font-weight: bold; font-size: 14px;">Your Question</p>
+            <textarea id="question-area" class="question-area" placeholder="e.g., How to protect cotton crops from aphids?"></textarea>
+            
+            <div id="error-msg" style="display:none; color:red; font-size:14px; margin-top:8px;"></div>
+
+            <button class="btn-primary submit-btn" id="submit-btn">
+                <i data-lucide="send" size="18"></i>
+                <span id="submit-label">Submit Query</span>
+            </button>
+
+            <p style="margin-top: 32px; font-weight: bold; font-size: 16px;">Suggested Questions</p>
+            <div style="margin-top: 16px;" id="suggestions">
+                <div class="suggestion-chip">What is the best time to plant cotton?</div>
+                <div class="suggestion-chip">How often should I water my crops in summer?</div>
+                <div class="suggestion-chip">Common diseases in cotton plants?</div>
+                <div class="suggestion-chip">How to use bio-fertilizers?</div>
+            </div>
+        </main>
+        </div> <!-- End of main-content-layout -->
+    </div>
+    <script type="module">
+        import { history } from './js/api.js?v=2.1';
+        import CONFIG from './js/config.js?v=2.1';
+
+        lucide.createIcons();
+
+        let keyIndex = 0;
+
+        async function callGemini(prompt) {
+            const apiKeys = CONFIG.GEMINI_API_KEYS;
+            for (let attempt = 0; attempt < apiKeys.length; attempt++) {
+                const apiKey = apiKeys[(keyIndex + attempt) % apiKeys.length];
+                try {
+                    const res = await fetch(
+                        `https://generativelanguage.googleapis.com/v1/models/${CONFIG.GEMINI_MODEL}:generateContent?key=${apiKey}`,
+                        {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                contents: [{ parts: [{ text: prompt }] }],
+                                generationConfig: { temperature: 0.7, maxOutputTokens: 2048 }
+                            })
+                        }
+                    );
+                    if (!res.ok) { 
+                        console.error('Gemini error:', await res.text());
+                        keyIndex = (keyIndex + 1) % apiKeys.length; 
+                        continue; 
+                    }
+                    const data = await res.json();
+                    const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+                    if (text) { 
+                        keyIndex = (keyIndex + attempt) % apiKeys.length; 
+                        return text; 
+                    }
+                } catch (e) {
+                    console.error('Request failed:', e);
+                    keyIndex = (keyIndex + 1) % apiKeys.length;
+                }
+            }
+            throw new Error('All Gemini API keys exhausted or failing. Please check if they are valid or try again later.');
+        }
+
+        const submitBtn = document.getElementById('submit-btn');
+        const submitLabel = document.getElementById('submit-label');
+        const questionArea = document.getElementById('question-area');
+        const errorMsg = document.getElementById('error-msg');
+        const email = localStorage.getItem('user_email');
+
+        // Suggestion chips
+        document.querySelectorAll('.suggestion-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                questionArea.value = chip.textContent;
+            });
+        });
+
+        submitBtn.addEventListener('click', async () => {
+            const query = questionArea.value.trim();
+            if (!query) {
+                errorMsg.textContent = 'Please enter a question.';
+                errorMsg.style.display = 'block';
+                return;
+            }
+            errorMsg.style.display = 'none';
+            submitBtn.disabled = true;
+            submitLabel.textContent = 'Getting AI response...';
+
+            try {
+                const prompt = `You are 'Kisan Mitra', an expert agricultural assistant in India.
+USER QUESTION: '${query}'
+CRITICAL INSTRUCTIONS:
+1. LANGUAGE: Detect the language of the USER QUESTION. You MUST answer strictly in that EXACT SAME language.
+2. Be expert: Provide detailed, practical, and highly accurate farming advice.
+3. Professional: Use clear formatting with bold headers and bullet points.
+4. Keep the answer concise but very helpful.`;
+
+                const aiResponse = await callGemini(prompt);
+
+                // Save to history in backend
+                if (email) {
+                    try {
+                        await history.save({ email, query, response: aiResponse, is_disease: false });
+                    } catch (e) { console.warn('History save failed:', e); }
+                }
+
+                // Pass to AI response page via sessionStorage
+                sessionStorage.setItem('ai_query', query);
+                sessionStorage.setItem('ai_response', aiResponse);
+                window.location.href = 'ai-response.html';
+            } catch (err) {
+                errorMsg.textContent = err.message;
+                errorMsg.style.display = 'block';
+            } finally {
+                submitBtn.disabled = false;
+                submitLabel.textContent = 'Submit Query';
+            }
+        });
+    </script>
+</body>
+</html>

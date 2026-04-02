@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Tips - KisanMitra</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .tips-header {
+            padding: 40px 16px 12px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #EEEEEE;
+        }
+        .info-green-box {
+            background: #DCFCE7;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .tip-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .tip-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .tip-date {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #757575;
+            font-size: 12px;
+        }
+        .tip-desc {
+            margin-top: 16px;
+            font-size: 15px;
+            line-height: 1.5;
+            color: #424242;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="desktop-sidebar">
+            <div class="sidebar-logo">
+                <i data-lucide="sprout" size="32"></i>
+                <span>KisanMitra</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="home.html" class="sidebar-link"><i data-lucide="home"></i> Home</a>
+                <a href="disease-detection.html" class="sidebar-link"><i data-lucide="camera"></i> Crop Scan</a>
+                <a href="weather.html" class="sidebar-link"><i data-lucide="cloud-sun"></i> Weather</a>
+                <a href="ask-question.html" class="sidebar-link"><i data-lucide="message-square"></i> Ask AI</a>
+                <a href="history.html" class="sidebar-link"><i data-lucide="history"></i> History</a>
+                <a href="settings.html" class="sidebar-link"><i data-lucide="settings"></i> Settings</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="sidebar-link" style="color: var(--soft-red);"><i data-lucide="log-out"></i> Logout</a>
+            </div>
+        </aside>
+
+        <div class="main-content-layout">
+            <header class="tips-header">
+                <a href="home.html" style="color: black;"><i data-lucide="arrow-left"></i></a>
+                <h2 style="margin-left: 16px; font-size: 18px; font-weight: bold;">Daily Farming Tips</h2>
+            </header>
+
+        <main class="p-24" style="padding-bottom: 100px;">
+            <div class="info-green-box">
+                <i data-lucide="lightbulb" color="#00C853"></i>
+                <p style="margin-left: 16px; font-size: 14px; line-height: 1.4;">Based on your activity and location, we've curated these tips to help you improve your farm yield.</p>
+            </div>
+
+            <div id="tips-container" style="margin-top: 24px;">
+                <!-- Dynamic Content Loads Here -->
+            </div>
+            <p style="text-align: center; color: var(--grey); font-size: 14px; margin-bottom: 32px;">Tips are updated daily based on real-time data</p>
+        </main>
+        </div> <!-- End of main-content-layout -->
+    </div>
+
+    <script>
+        lucide.createIcons();
+        const container = document.getElementById('tips-container');
+        
+        const tipData = [
+            { title: "Soil Moisture Check", desc: "Check the soil moisture level before starting the next irrigation cycle. Over-watering can lead to root rot in cotton crops during this season." },
+            { title: "Pest Management", desc: "Look out for early signs of pink bollworm. Early detection and localized treatment can save up to 20% of your harvest." },
+            { title: "Fertilizer Timing", desc: "Applying Urea during the early morning hours ensures maximum absorption and reduces nitrogen loss to the atmosphere." },
+            { title: "Harvesting Prep", desc: "Start preparing your storage area. Ensure it is dry and well-ventilated to prevent fungus growth in harvested crops." }
+        ];
+
+        function generateTips() {
+            const today = new Date();
+            for (let i = 0; i < 4; i++) {
+                const date = new Date(today);
+                date.setDate(today.getDate() - i);
+                const dateStr = date.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' });
+                const tip = tipData[i % tipData.length];
+
+                const card = document.createElement('div');
+                card.className = 'tip-card';
+                card.innerHTML = `
+                    <div class="tip-title-row">
+                        <h3 style="font-size: 18px; font-weight: bold;">${tip.title}</h3>
+                        <div class="tip-date">
+                            <i data-lucide="calendar" size="14"></i>
+                            <span>${dateStr}</span>
+                        </div>
+                    </div>
+                    <p class="tip-desc">${tip.desc}</p>
+                `;
+                container.appendChild(card);
+            }
+            lucide.createIcons();
+        }
+
+        generateTips();
+    </script>
+</body>
+</html>

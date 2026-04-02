@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - KisanMitra</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .settings-header {
+            padding: 40px 16px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 32px;
+        }
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            background: var(--light-green);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .menu-list {
+            margin-top: 32px;
+        }
+        .menu-item {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            text-decoration: none;
+            color: var(--black);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="desktop-sidebar">
+            <div class="sidebar-logo">
+                <i data-lucide="sprout" size="32"></i>
+                <span>KisanMitra</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="home.html" class="sidebar-link"><i data-lucide="home"></i> Home</a>
+                <a href="disease-detection.html" class="sidebar-link"><i data-lucide="camera"></i> Crop Scan</a>
+                <a href="weather.html" class="sidebar-link"><i data-lucide="cloud-sun"></i> Weather</a>
+                <a href="ask-question.html" class="sidebar-link"><i data-lucide="message-square"></i> Ask AI</a>
+                <a href="history.html" class="sidebar-link"><i data-lucide="history"></i> History</a>
+                <a href="settings.html" class="sidebar-link active"><i data-lucide="settings"></i> Settings</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="sidebar-link" style="color: var(--soft-red);"><i data-lucide="log-out"></i> Logout</a>
+            </div>
+        </aside>
+
+        <div class="main-content-layout">
+            <header class="settings-header">
+                <a href="home.html" style="position: absolute; left: 16px; color: black;"><i data-lucide="arrow-left"></i></a>
+                <h2 style="font-size: 18px; font-weight: bold;">Settings</h2>
+            </header>
+
+        <main class="p-24" style="padding-bottom: 100px;">
+            <div class="profile-section">
+                <div class="profile-avatar">
+                    <i data-lucide="user" size="60" color="var(--vibrant-green)"></i>
+                </div>
+                <h2 id="settings-name" style="margin-top: 16px; font-size: 20px; font-weight: bold;">Demo Farmer</h2>
+                <p id="settings-email" style="color: var(--grey); font-size: 14px; margin-top: 4px;">dj@gmail.com</p>
+            </div>
+
+            <div class="menu-list">
+                <a href="edit-profile.html" class="menu-item">
+                    <span>Personal Information</span>
+                    <i data-lucide="chevron-right" color="var(--grey)" size="20"></i>
+                </a>
+                <a href="language.html" class="menu-item">
+                    <span>Language & Voice Settings</span>
+                    <i data-lucide="chevron-right" color="var(--grey)" size="20"></i>
+                </a>
+                <a href="notifications.html" class="menu-item">
+                    <span>Notification Settings</span>
+                    <i data-lucide="chevron-right" color="var(--grey)" size="20"></i>
+                </a>
+                <a href="weather.html" class="menu-item">
+                    <span>Weather</span>
+                    <i data-lucide="chevron-right" color="var(--grey)" size="20"></i>
+                </a>
+                <a href="privacy.html" class="menu-item">
+                    <span>Privacy & Security</span>
+                    <i data-lucide="chevron-right" color="var(--grey)" size="20"></i>
+                </a>
+            </div>
+        </main>
+
+        <nav class="bottom-nav">
+            <a href="home.html" class="nav-item">
+                <i data-lucide="sprout"></i>
+                <span>Home</span>
+            </a>
+            <a href="help.html" class="nav-item">
+                <i data-lucide="help-circle"></i>
+                <span>Help</span>
+            </a>
+            <a href="settings.html" class="nav-item active">
+                <i data-lucide="settings"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+        </div> <!-- End of main-content-layout -->
+    </div>
+    <script>
+        lucide.createIcons();
+        const userName = localStorage.getItem('user_name');
+        const userEmail = localStorage.getItem('user_email');
+        
+        if (userName) document.getElementById('settings-name').textContent = userName;
+        if (userEmail) document.getElementById('settings-email').textContent = userEmail;
+    </script>
+</body>
+</html>

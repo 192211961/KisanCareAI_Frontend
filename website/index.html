@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KisanMitra - Farmer's Friend</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Lucide Icons for simplistic design -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .splash-screen {
+            background: linear-gradient(135deg, var(--vibrant-green), var(--deep-green));
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Desktop background decoration */
+        @media (min-width: 1024px) {
+            .splash-screen::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+                animation: rotate 20s linear infinite;
+            }
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .logo-container {
+            background: white;
+            padding: 24px;
+            border-radius: 35px;
+            margin-bottom: 24px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 10;
+        }
+        .app-name {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 10;
+        }
+        .app-slogan {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-top: 8px;
+            position: relative;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="splash-screen">
+            <div class="visual-content">
+                <div class="logo-container" style="display:inline-block; animation: bounce 2s infinite;">
+                    <i data-lucide="sprout" size="80" stroke="#00C853"></i>
+                </div>
+                <h1 class="app-name" style="font-size: 64px; margin-top: 20px;">KisanMitra</h1>
+                <p class="app-slogan" style="font-size: 24px; margin-bottom: 40px; color: rgba(255,255,255,0.9);">Empowering farmers with smart AI technology</p>
+                
+                <div style="margin-top: 60px;">
+                    <div class="spinner" style="width: 40px; height: 40px;"></div>
+                </div>
+                
+                <div style="position: absolute; bottom: 40px; left: 0; right: 0; opacity: 0.7; font-size: 14px;">
+                    Loading your digital farm assistant...
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+        .splash-screen .visual-content {
+            max-width: 800px;
+            padding: 40px;
+        }
+    </style>
+    <script>
+        lucide.createIcons();
+        // Auto navigate after 3 seconds like a splash screen
+        setTimeout(() => {
+            window.location.href = 'login.html';
+        }, 3000);
+    </script>
+</body>
+</html>
