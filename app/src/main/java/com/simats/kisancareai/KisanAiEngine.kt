@@ -13,11 +13,7 @@ object KisanAiEngine {
 
     // List of API keys for rotation to handle rate limits
     private val API_KEYS = listOf(
-        "AIzaSyC_c8OjfJ4PoC7MX4eqaRB0B6RmwCCs2-U",
-        "AIzaSyB3rX1f4FMSddB7lzfjwoINk2807Dtcudc",
-        "AIzaSyBKTDw5N_7OFw39qkWFFrdUZrdBlWnbjzY",
-        "AIzaSyBBz5tKXUu82928AFvOlixIosiiaBznGUE",
-        "AIzaSyAkcJdKOkCpbPloPoez6M7Vlxhs_lnA4jo"
+      //enter the api keys you want to use here//
     )
 
     private var currentKeyIndex = 0
